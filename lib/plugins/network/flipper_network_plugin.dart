@@ -1,0 +1,75 @@
+import 'package:flutter/services.dart';
+import '../../flipper_plugin.dart';
+
+class RequestInfo {
+  String requestId;
+  int timeStamp;
+  Map<String, dynamic> headers;
+  String method;
+  String uri;
+  dynamic body;
+
+  RequestInfo({
+    this.requestId, 
+    this.timeStamp, 
+    this.headers,
+    this.method, 
+    this.uri,
+    this.body,
+  });
+
+  Map<String, dynamic> toJson() =>
+    {
+      'requestId' : requestId,
+      'timeStamp' : timeStamp,
+      'headers'   : headers,
+      'method'    : method,
+      'uri'       : uri,
+      'body'      : body,
+    };
+}
+
+class ResponseInfo {
+  String requestId;
+  int timeStamp;
+  int statusCode;
+  String statusReason;
+  Map<String, dynamic> headers;
+  dynamic body;
+
+  ResponseInfo({
+    this.requestId, 
+    this.timeStamp, 
+    this.statusCode,
+    this.statusReason, 
+    this.headers,
+    this.body,
+  });
+  Map<String, dynamic> toJson() =>
+    {
+      'requestId'     : requestId,
+      'timeStamp'     : timeStamp,
+      'statusCode'    : statusCode,
+      'statusReason'  : statusReason,
+      'headers'       : headers,
+      'body'          : body,
+    };
+}
+
+class FlipperNetworkPlugin extends FlipperPlugin {
+  static const String ID = 'Network';
+  static const MethodChannel _channel = const MethodChannel('flutter_flipperkit'); 
+
+  @override
+  String getId() {
+    return ID;
+  }
+
+  void reportRequest(final RequestInfo requestInfo) async {
+    await _channel.invokeMethod('pluginNetworkReportRequest', requestInfo.toJson());
+  }
+
+  void reportResponse(final ResponseInfo responseInfo) async {
+    await _channel.invokeMethod('pluginNetworkReportResponse', responseInfo.toJson());
+  }
+}
