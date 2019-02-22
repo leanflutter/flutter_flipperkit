@@ -40,6 +40,7 @@ target 'Runner' do
   system('rm -rf .symlinks')
   system('mkdir -p .symlinks/plugins')
 
+  pod 'flutter_flipperkit', :path => '../../ios/flutter_flipperkit.podspec'
   # Flutter Pods
   generated_xcode_build_settings = parse_KV_file('./Flutter/Generated.xcconfig')
   if generated_xcode_build_settings.empty?
