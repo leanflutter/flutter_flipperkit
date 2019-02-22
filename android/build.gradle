@@ -32,7 +32,7 @@ android {
         disable 'InvalidPackage'
     }
     dependencies {
-        debugImplementation 'com.facebook.flipper:flipper:0.15.0'
+        debugImplementation 'com.facebook.flipper:flipper:0.16.2'
         debugImplementation 'com.facebook.soloader:soloader:0.5.1'
     }
 }

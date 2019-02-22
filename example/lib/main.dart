@@ -5,12 +5,11 @@ import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 import 'package:uuid/uuid.dart';
 
 Uuid uuid = new Uuid();
-FlipperClient flipperClient = new FlipperClient();
-
-FlipperNetworkPlugin flipperNetworkPlugin = new FlipperNetworkPlugin();
 
 void main() {
-  flipperClient.addPlugin(flipperNetworkPlugin);
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperNetworkPlugin());
   flipperClient.start();
 
   runApp(MyApp());
@@ -51,6 +50,10 @@ class _MyAppState extends State<MyApp> {
                     ..putIfAbsent("code", () => 0)
                     ..putIfAbsent("message", () => "login successful")
                 );
+
+                FlipperNetworkPlugin flipperNetworkPlugin = FlipperClient.getDefault()
+                  .getPlugin(FlipperNetworkPlugin.ID);
+
                 flipperNetworkPlugin.reportRequest(requestInfo);
                 flipperNetworkPlugin.reportResponse(responseInfo);
               },

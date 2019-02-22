@@ -2,7 +2,7 @@
 
 ## 简介
 
-*Flipper for Flutter 可帮助您调试在模拟器或连接的物理开发设备中运行的 Flutter 应用。*
+*Flipper SDK for Flutter 可帮助您调试在模拟器或连接的物理开发设备中运行的 Flutter 应用。*
 
 ### 特性
 
@@ -31,11 +31,10 @@ $ flutter packages get
 ```dart
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 
-FlipperClient flipperClient = new FlipperClient();
-FlipperNetworkPlugin flipperNetworkPlugin = new FlipperNetworkPlugin();
-
 void main() {
-  flipperClient.addPlugin(flipperNetworkPlugin);
+  FlipperClient flipperClient = FlipperClient.getDefault();
+
+  flipperClient.addPlugin(new FlipperNetworkPlugin());
   flipperClient.start();
 
   // 在网络框架拦截器中添加下面逻辑
@@ -48,7 +47,7 @@ void main() {
     uri: 'https://api.example.com/account/login',
     // body,
   );
-  ResponseInfo responseInfo =ResponseInfo(
+  ResponseInfo responseInfo = ResponseInfo(
     requestId: identifier,
     timeStamp: new DateTime.now().millisecondsSinceEpoch,
     statusCode: 200,
@@ -56,6 +55,9 @@ void main() {
       ..putIfAbsent("code", () => 0)
       ..putIfAbsent("message", () => "login successful")
   );
+
+  FlipperNetworkPlugin flipperNetworkPlugin = FlipperClient.getDefault()
+                  .getPlugin(FlipperNetworkPlugin.ID);
   flipperNetworkPlugin.reportRequest(requestInfo);
   flipperNetworkPlugin.reportResponse(responseInfo);
 
