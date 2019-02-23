@@ -1,10 +1,6 @@
-import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
-import 'package:uuid/uuid.dart';
-
-Uuid uuid = new Uuid();
 
 void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
@@ -33,7 +29,8 @@ class _MyAppState extends State<MyApp> {
             FlatButton(
               child: Text("POST"),
               onPressed: () {
-                String identifier = uuid.v4();
+                Random random = new Random();
+                String identifier = '${random.nextInt(9999)}';
                 RequestInfo requestInfo = RequestInfo(
                   requestId: identifier,
                   timeStamp: new DateTime.now().millisecondsSinceEpoch,
