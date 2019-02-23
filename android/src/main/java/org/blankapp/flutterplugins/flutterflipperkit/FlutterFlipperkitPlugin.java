@@ -7,6 +7,7 @@ import com.facebook.flipper.android.utils.FlipperUtils;
 import com.facebook.flipper.core.FlipperClient;
 import com.facebook.flipper.plugins.network.NetworkFlipperPlugin;
 import com.facebook.flipper.plugins.network.NetworkReporter;
+import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
 import com.facebook.soloader.SoLoader;
 
 import org.json.JSONObject;
@@ -26,18 +27,16 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
  * FlutterFlipperkitPlugin
  */
 public class FlutterFlipperkitPlugin implements MethodCallHandler {
-    private final Activity activity;
-
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
+    private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
 
     public FlutterFlipperkitPlugin(Activity activity) {
-        this.activity = activity;
-
         SoLoader.init(activity.getApplication(), false);
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
             flipperClient = AndroidFlipperClient.getInstance(activity);
             networkFlipperPlugin = new NetworkFlipperPlugin();
+            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity);
         }
     }
 
@@ -85,6 +84,9 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
                 case NetworkFlipperPlugin.ID:
                     flipperClient.addPlugin(networkFlipperPlugin);
                     break;
+                case "Preferences":
+                    flipperClient.addPlugin(sharedPreferencesFlipperPlugin);
+                    break;
             }
         }
 
@@ -118,54 +120,60 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
     }
 
     private NetworkReporter.RequestInfo convertRequest(MethodCall call, String identifier) {
-        List<NetworkReporter.Header> headers = convertHeader(call);
         NetworkReporter.RequestInfo info = new NetworkReporter.RequestInfo();
 
-        Map<String, Object> map = call.argument("body");
-        JSONObject body = null;
-        if (map != null) {
-            body = new JSONObject(map);
-        }
+        List<NetworkReporter.Header> headers = convertHeader(call);
+        byte[] body = convertBody(call);
 
         info.requestId = identifier;
         info.timeStamp = call.argument("timeStamp");
         info.headers = headers;
         info.method = call.argument("method");
         info.uri = call.argument("uri");
-        info.body = body != null ? body.toString().getBytes() : null;
+        info.body = body;
         return info;
     }
 
     private NetworkReporter.ResponseInfo convertResponse(MethodCall call, String identifier) {
-        List<NetworkReporter.Header> headers = convertHeader(call);
-
-        if (headers.size() == 0) {
-            headers.add(new NetworkReporter.Header("Content-Type", "application/json"));
-        }
-
-        Map<String, Object> map = call.argument("body");
-        JSONObject body = null;
-        if (map != null) {
-            body = new JSONObject(map);
-        }
-
         NetworkReporter.ResponseInfo info = new NetworkReporter.ResponseInfo();
+
+        List<NetworkReporter.Header> headers = convertHeader(call);
+        byte[] body = convertBody(call);
+
         info.requestId = identifier;
         info.timeStamp = call.argument("timeStamp");
         info.statusCode = call.argument("statusCode");
         info.headers = headers;
-        info.body = body != null ? body.toString().getBytes() : null;
+        info.body = body;
         return info;
     }
 
-    private List<NetworkReporter.Header> convertHeader(MethodCall call) {
-        List<NetworkReporter.Header> list = new ArrayList<>();
-        Map<String, String> headers = call.argument("headers");
+    private byte[] convertBody(MethodCall call) {
+        String bodyString = null;
+        if (call.hasArgument("body")) {
+            try {
+                Map<String, Object> bodyMap = call.argument("body");
+                bodyString = new JSONObject(bodyMap).toString();
+            } catch (ClassCastException e) { }
 
-        if (headers != null) {
-            Set<String> keys = headers.keySet();
+            if (bodyString == null) {
+                try {
+                    bodyString = call.argument("body");
+                } catch (NullPointerException e) { }
+            }
+        }
+
+        return bodyString != null ? bodyString.getBytes() : null;
+    }
+
+    private List<NetworkReporter.Header> convertHeader(MethodCall call) {
+        Map<String, String> argHeaders = call.argument("headers");
+        List<NetworkReporter.Header> list = new ArrayList<>();;
+
+        if (argHeaders != null) {
+            Set<String> keys = argHeaders.keySet();
             for (String key : keys) {
-                list.add(new NetworkReporter.Header(key, headers.get(key)));
+                list.add(new NetworkReporter.Header(key, argHeaders.get(key)));
             }
         }
         return list;

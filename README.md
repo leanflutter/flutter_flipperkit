@@ -11,6 +11,12 @@
 
 ## 快速开始
 
+### 必备条件
+
+开始之前确保你已安装：
+
+- 已安装 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+
 ### 安装
 
 添加以下内容到包的 pubspec.yaml 文件中：

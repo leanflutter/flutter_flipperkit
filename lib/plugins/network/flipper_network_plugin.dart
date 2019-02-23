@@ -18,8 +18,11 @@ class RequestInfo {
     this.body,
   });
 
-  Map<String, dynamic> toJson() =>
-    {
+  Map<String, dynamic> toJson() {
+    if (headers == null) {
+      headers = new Map();
+    }
+    return {
       'requestId' : requestId,
       'timeStamp' : timeStamp,
       'headers'   : headers,
@@ -27,6 +30,7 @@ class RequestInfo {
       'uri'       : uri,
       'body'      : body,
     };
+  }
 }
 
 class ResponseInfo {
@@ -45,8 +49,11 @@ class ResponseInfo {
     this.headers,
     this.body,
   });
-  Map<String, dynamic> toJson() =>
-    {
+  Map<String, dynamic> toJson() {
+    if (headers == null) {
+      headers = new Map();
+    }
+    return {
       'requestId'     : requestId,
       'timeStamp'     : timeStamp,
       'statusCode'    : statusCode,
@@ -54,6 +61,7 @@ class ResponseInfo {
       'headers'       : headers,
       'body'          : body,
     };
+  }
 }
 
 class FlipperNetworkPlugin extends FlipperPlugin {

@@ -37,18 +37,27 @@ class _MyAppState extends State<MyApp> {
                 RequestInfo requestInfo = RequestInfo(
                   requestId: identifier,
                   timeStamp: new DateTime.now().millisecondsSinceEpoch,
-                  // headers
+                  headers: new Map()
+                    ..putIfAbsent("Content-Type", () => "application/json"),
                   method: 'POST',
                   uri: 'https://api.example.com/account/login',
-                  // body,
+                  // body: new Map()
+                  //   ..putIfAbsent("username", () => 'lijy91')
+                  //   ..putIfAbsent("password", () => "qDrTBZk8jgbA"),
+                  body: 'Hello world!',
                 );
-                ResponseInfo responseInfo =ResponseInfo(
+
+                ResponseInfo responseInfo = ResponseInfo(
                   requestId: identifier,
                   timeStamp: new DateTime.now().millisecondsSinceEpoch,
                   statusCode: 200,
+                  headers: new Map()
+                    ..putIfAbsent("Server", () => "Apache/2.4.1 (Unix)")
+                    ..putIfAbsent("Content-Type", () => "application/json"),
                   body: new Map()
                     ..putIfAbsent("code", () => 0)
-                    ..putIfAbsent("message", () => "login successful")
+                    ..putIfAbsent("message", () => "login successful"),
+                  // body: 'Hello world!',
                 );
 
                 FlipperNetworkPlugin flipperNetworkPlugin = FlipperClient.getDefault()
