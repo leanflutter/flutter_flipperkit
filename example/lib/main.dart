@@ -1,11 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
   flipperClient.addPlugin(new FlipperNetworkPlugin());
+  flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
   flipperClient.start();
 
   runApp(MyApp());
@@ -26,6 +28,15 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Row(
           children: <Widget>[
+            FlatButton(
+              child: Text("shared"),
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                int counter = (prefs.getInt('counter') ?? 0) + 1;
+                print('Pressed $counter times.');
+                await prefs.setInt('counter', counter);
+              },
+            ),
             FlatButton(
               child: Text("POST"),
               onPressed: () {

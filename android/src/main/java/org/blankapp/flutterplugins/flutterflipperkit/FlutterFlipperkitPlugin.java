@@ -27,16 +27,19 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
  * FlutterFlipperkitPlugin
  */
 public class FlutterFlipperkitPlugin implements MethodCallHandler {
+    private final Activity activity;
+
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
 
     public FlutterFlipperkitPlugin(Activity activity) {
+        this.activity = activity;
         SoLoader.init(activity.getApplication(), false);
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
             flipperClient = AndroidFlipperClient.getInstance(activity);
             networkFlipperPlugin = new NetworkFlipperPlugin();
-            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity);
+            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity, "FlutterSharedPreferences");
         }
     }
 

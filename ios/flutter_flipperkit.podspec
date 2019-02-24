@@ -5,7 +5,7 @@ flipperkit_version = '0.16.2'
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Flipper SDK for Flutter.'
   s.description      = <<-DESC
   Flipper SDK for Flutter.
