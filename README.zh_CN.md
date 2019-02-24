@@ -2,13 +2,13 @@
 
 [![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dartlang.org/packages/flutter_flipperkit)
 
-English | [简体中文](./README.zh_CN.md)
+[English](./README.zh_CN.md) | 简体中文
 
-## Introduction
+## 简介
 
-*Flipper SDK for Flutter helps you debug Flutter apps running in an emulator/simulator or connected physical development devices.*
+*Flipper SDK for Flutter 可帮助您调试在模拟器或连接的物理开发设备中运行的 Flutter 应用。*
 
-### Features
+### 特性
 
 - Network inspector
 ![network](https://fbflipper.com/docs/assets/network.png)
@@ -16,24 +16,24 @@ English | [简体中文](./README.zh_CN.md)
 - Shared preferences (and UserDefaults) inspector
 ![shared-preferences](https://fbflipper.com/docs/assets/shared-preferences.png)
 
-## Quick Start
+## 快速开始
 
-### Prerequisites
+### 必备条件
 
-Before starting make sure you have:
+开始之前确保你已安装：
 
-- Installed [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- 已安装 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
 
-### Installation
+### 安装
 
-Add this to your package's pubspec.yaml file:
+添加以下内容到包的 pubspec.yaml 文件中：
 
 ```yaml
 dependencies:
   flutter_flipperkit: ^0.0.2
 ```
 
-Change your project `ios/Podfile` file according to the example:
+根据示例更改项目的 ios/Podfile 文件：
 
 ```diff
 +source 'https://github.com/facebook/flipper.git'
@@ -43,7 +43,7 @@ Change your project `ios/Podfile` file according to the example:
 +platform :ios, '9.0'
 ```
 
-Change your project `android/app/build.gradle` file according to the example:
+根据示例更改项目的 android/app/build.gradle 文件：
 
 ```diff
 android {
@@ -57,13 +57,13 @@ android {
 }
 ```
 
-You can install packages from the command line:
+您可以通过命令行安装软件包：
 
 ```bash
 $ flutter packages get
 ```
 
-### Usage
+### 用法
 
 ```dart
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
@@ -111,19 +111,19 @@ void main() {
 
 ```
 
-### Run the app
+### 运行程序
 
 ```bash
 $ flutter run
 ```
 
-## Discussion
+## 探讨
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram](https://t.me/lijy91) or my wechat.
+如果您对此项目有任何建议或疑问，可以通过 [Telegram](https://t.me/lijy91) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
 
-## License
+## 许可证
 
 ```
 MIT License
