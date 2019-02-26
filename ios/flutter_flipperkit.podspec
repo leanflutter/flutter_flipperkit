@@ -25,4 +25,5 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
   s.ios.deployment_target = '9.0'
+  s.static_framework = true
 end

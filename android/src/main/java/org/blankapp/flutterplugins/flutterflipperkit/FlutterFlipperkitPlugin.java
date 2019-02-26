@@ -10,9 +10,11 @@ import com.facebook.flipper.plugins.network.NetworkReporter;
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
 import com.facebook.soloader.SoLoader;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -155,8 +157,13 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
         String bodyString = null;
         if (call.hasArgument("body")) {
             try {
-                Map<String, Object> bodyMap = call.argument("body");
-                bodyString = new JSONObject(bodyMap).toString();
+                Object argBody = call.argument("body");
+
+                if (argBody instanceof HashMap) {
+                    bodyString = new JSONObject((HashMap) argBody).toString();
+                } else if (argBody instanceof  ArrayList) {
+                    bodyString = new JSONArray((ArrayList) argBody).toString();
+                }
             } catch (ClassCastException e) { }
 
             if (bodyString == null) {

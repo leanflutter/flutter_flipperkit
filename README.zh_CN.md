@@ -1,6 +1,7 @@
 # flutter_flipperkit
 
 [![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dartlang.org/packages/flutter_flipperkit)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 [English](./README.zh_CN.md) | 简体中文
 
@@ -30,7 +31,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.2
+  flutter_flipperkit: ^0.0.3
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -64,6 +65,8 @@ $ flutter packages get
 ```
 
 ### 用法
+
+> 如果你正在使用 [dio](https://github.com/flutterchina/dio), 请参阅该[示例](./example/lib/networking/api_client/api_client.dart)
 
 ```dart
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
@@ -116,6 +119,12 @@ void main() {
 ```bash
 $ flutter run
 ```
+
+## 已知问题（需注意）
+
+- 【iOS】如果使用 cocoapods 1.6.0 及以上版本，不支持 `use_frameworks!`
+- 【iOS】无法通过 flutter run 命令启动物理设备
+- 【Desktop】中文字符会出现乱码问题，已解决并提交了 [PR](https://github.com/facebook/flipper/pull/377)
 
 ## 探讨
 

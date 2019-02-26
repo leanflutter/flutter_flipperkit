@@ -1,6 +1,7 @@
 # flutter_flipperkit
 
 [![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dartlang.org/packages/flutter_flipperkit)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
 
@@ -30,7 +31,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.2
+  flutter_flipperkit: ^0.0.3
 ```
 
 Change your project `ios/Podfile` file according to the example:
@@ -64,6 +65,8 @@ $ flutter packages get
 ```
 
 ### Usage
+
+> If you use [dio](https://github.com/flutterchina/dio), please see the [example](./example/lib/networking/api_client/api_client.dart)
 
 ```dart
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
@@ -116,6 +119,12 @@ void main() {
 ```bash
 $ flutter run
 ```
+
+## Known Issues (to note)
+
+- [iOS] If you use cocoapods 1.6.0 or later, does not support the `use_frameworks!`
+- [iOS] Unable to start physical device with `flutter run` command
+- [Desktop] Chinese characters will be garbled, solved and submitted [PR](https://github.com/facebook/flipper/pull/377)
 
 ## Discussion
 

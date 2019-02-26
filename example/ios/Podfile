@@ -35,6 +35,8 @@ def parse_KV_file(file, separator='=')
 end
 
 target 'Runner' do
+  # use_frameworks!
+
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.
   system('rm -rf .symlinks')
@@ -60,6 +62,26 @@ target 'Runner' do
     File.symlink(p[:path], symlink)
     pod p[:name], :path => File.join(symlink, 'ios')
   }
+
+  # If you use `use_frameworks!` in your Podfile, 
+  # uncomment the below $static_framework array and also 
+  # the pre_install section.  This will cause Flipper and 
+  # it's dependencies to be static and all other pods to 
+  # be dynamic.
+  # $static_framework = ['FlipperKit', 'Flipper', 'Folly',
+  #   'CocoaAsyncSocket', 'ComponentKit', 'DoubleConversion', 
+  #   'glog', 'PeerTalk', 'RSocket', 'Yoga', 'YogaKit', 
+  #   'CocoaLibEvent', 'OpenSSL-Static', 'boost-for-react-native',
+  #   'flutter_flipperkit']
+
+  # pre_install do |installer|
+  #   Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
+  #   installer.pod_targets.each do |pod|
+  #     if $static_framework.include?(pod.name)  
+  #       pod.host_requires_frameworks = false
+  #     end
+  #   end
+  # end
 end
 
 post_install do |installer|

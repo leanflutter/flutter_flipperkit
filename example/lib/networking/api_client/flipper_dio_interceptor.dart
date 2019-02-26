@@ -1,44 +1,27 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 import 'package:uuid/uuid.dart';
 
-class DioClient {
-  static DioClient shared = new DioClient();
-
-  Dio _http;
+class FlipperDioInterceptor extends InterceptorsWrapper {
   FlipperNetworkPlugin _flipperNetworkPlugin;
 
-  DioClient() {
+  FlipperDioInterceptor() {
     _flipperNetworkPlugin = FlipperClient
       .getDefault().getPlugin(FlipperNetworkPlugin.ID);
-    
-    Options options = new Options(
-      connectTimeout: 5000,
-      receiveTimeout: 3000,
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      responseType: ResponseType.JSON,
-    );
-    this._http = new Dio(options);
-    this._http.interceptor.request.onSend = (Options options) async {
-      this._reportRequest(options);
-      return options;
-    };
-    this._http.interceptor.response.onSuccess = (Response response) {
-      this._reportResponse(response);
-      return response;
-    };
   }
 
-  Dio get http {
-    return _http;
+  RequestOptions onRequest(RequestOptions options) {
+    this._reportRequest(options);
+    return options;
   }
 
-  void _reportRequest(Options options) {
+  Response onResponse(Response response) {
+    this._reportResponse(response);
+    return response;
+  }
+
+  void _reportRequest(RequestOptions options) {
     String requestId = new Uuid().v4();
     options.extra.putIfAbsent("requestId", () => requestId);
     RequestInfo requestInfo = new RequestInfo(

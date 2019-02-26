@@ -1,5 +1,5 @@
-import './dio_client/dio_client.dart';
+import './api_client/api_client.dart';
 
-export './dio_client/dio_client.dart';
+export './api_client/api_client.dart';
 
-var sharedDioClient = DioClient.shared;
+var sharedApiClient = ApiClient.shared;

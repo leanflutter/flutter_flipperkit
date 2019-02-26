@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,7 +39,7 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("Network: GET"),
               onTap: () {
-                sharedDioClient.http.get('https://www.v2ex.com/api/topics/hot.json');
+                sharedApiClient.topics.list();
               },
             ),
           ],
