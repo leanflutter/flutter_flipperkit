@@ -66,8 +66,6 @@ $ flutter packages get
 
 ### 用法
 
-> 如果你正在使用 [dio](https://github.com/flutterchina/dio), 请参阅该[示例](./example/lib/networking/api_client/api_client.dart)
-
 ```dart
 import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 
@@ -78,41 +76,14 @@ void main() {
   flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
   flipperClient.start();
 
-  Random random = new Random();
-  String identifier = '${random.nextInt(9999)}';
-  RequestInfo requestInfo = RequestInfo(
-    requestId: identifier,
-    timeStamp: new DateTime.now().millisecondsSinceEpoch,
-    headers: new Map()
-      ..putIfAbsent("Content-Type", () => "application/json"),
-    method: 'POST',
-    uri: 'https://api.example.com/account/login',
-    body: new Map()
-       ..putIfAbsent("username", () => 'lijy91')
-       ..putIfAbsent("password", () => "qDrTBZk8jgbA"),
-  );
-  ResponseInfo responseInfo = ResponseInfo(
-    requestId: identifier,
-    timeStamp: new DateTime.now().millisecondsSinceEpoch,
-    statusCode: 200,
-    headers: new Map()
-      ..putIfAbsent("Server", () => "Apache/2.4.1 (Unix)")
-      ..putIfAbsent("Content-Type", () => "application/json"),
-    body: new Map()
-      ..putIfAbsent("code", () => 0)
-      ..putIfAbsent("message", () => "login successful"),
-  );
-
-  FlipperNetworkPlugin flipperNetworkPlugin = FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
-  flipperNetworkPlugin.reportRequest(requestInfo);
-  flipperNetworkPlugin.reportResponse(responseInfo);
-
   runApp(MyApp());
 }
 
 ...
 
 ```
+
+> 请参考 [dio 2.0.x](https://github.com/flutterchina/dio) 的 [集成示例](./example/lib/networking/api_client/api_client.dart) 将 `flutter_flipperkit` 集成到你的项目
 
 ### 运行程序
 
