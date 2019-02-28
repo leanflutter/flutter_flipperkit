@@ -94,7 +94,6 @@ $ flutter run
 ## Known Issues (to note)
 
 - [iOS] If you use cocoapods 1.6.0 or later, does not support the `use_frameworks!`
-- [iOS] Unable to start physical device with `flutter run` command
 - [Desktop] Chinese characters will be garbled, solved and submitted [PR](https://github.com/facebook/flipper/pull/377)
 
 ## Discussion
