@@ -11,14 +11,24 @@ class FlipperDioInterceptor extends InterceptorsWrapper {
       .getDefault().getPlugin(FlipperNetworkPlugin.ID);
   }
 
-  RequestOptions onRequest(RequestOptions options) {
+  @override
+  onRequest(RequestOptions options) {
     this._reportRequest(options);
     return options;
   }
 
-  Response onResponse(Response response) {
+  @override
+  onResponse(Response response) {
     this._reportResponse(response);
     return response;
+  }
+
+  @override
+  onError(DioError err) {
+    if (err.response != null) {
+      this._reportResponse(err.response);
+    }
+    return err;
   }
 
   void _reportRequest(RequestOptions options) {
