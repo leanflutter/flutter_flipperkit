@@ -1,11 +1,12 @@
 name: flutter_flipperkit
 description: Flipper SDK for Flutter.
-version: 0.0.3
+version: 0.0.4
 author: JianyingLi <lijy91@foxmail.com>
 homepage: https://github.com/blankapp/flutter_flipperkit
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  flutter: ">=0.1.4 <2.0.0"
 
 dependencies:
   flutter:

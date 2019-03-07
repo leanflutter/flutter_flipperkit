@@ -1,3 +1,8 @@
+## 0.0.4
+
+* Fix dart low version dependency failure
+* Upgrade `flipper` to `0.17.0`
+
 ## 0.0.3
 
 * Add dio 2.0 example

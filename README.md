@@ -31,7 +31,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.3
+  flutter_flipperkit: ^0.0.4
 ```
 
 Change your project `ios/Podfile` file according to the example:
@@ -44,7 +44,9 @@ Change your project `ios/Podfile` file according to the example:
 +platform :ios, '9.0'
 ```
 
-Change your project `android/app/build.gradle` file according to the example:
+Change your project files according to the example:
+
+`android/app/build.gradle`:
 
 ```diff
 android {
@@ -56,6 +58,13 @@ android {
 +        targetSdkVersion 28
     }
 }
+```
+
+`android/app/gradle.properties`:
+
+```diff
++android.useAndroidX=true
++android.enableJetifier=true
 ```
 
 You can install packages from the command line:
@@ -94,7 +103,6 @@ $ flutter run
 ## Known Issues (to note)
 
 - [iOS] If you use cocoapods 1.6.0 or later, does not support the `use_frameworks!`
-- [Desktop] Chinese characters will be garbled, solved and submitted [PR](https://github.com/facebook/flipper/pull/377)
 
 ## Discussion
 

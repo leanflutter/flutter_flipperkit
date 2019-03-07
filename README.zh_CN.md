@@ -31,7 +31,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.3
+  flutter_flipperkit: ^0.0.4
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -44,7 +44,9 @@ dependencies:
 +platform :ios, '9.0'
 ```
 
-根据示例更改项目的 android/app/build.gradle 文件：
+根据示例更改项目文件：
+
+`android/app/build.gradle`:
 
 ```diff
 android {
@@ -56,6 +58,13 @@ android {
 +        targetSdkVersion 28
     }
 }
+```
+
+`android/app/gradle.properties`
+
+```diff
++android.useAndroidX=true
++android.enableJetifier=true
 ```
 
 您可以通过命令行安装软件包：
@@ -94,7 +103,6 @@ $ flutter run
 ## 已知问题（需注意）
 
 - 【iOS】如果使用 cocoapods 1.6.0 及以上版本，不支持 `use_frameworks!`
-- 【Desktop】中文字符会出现乱码问题，已解决并提交了 [PR](https://github.com/facebook/flipper/pull/377)
 
 ## 探讨
 
