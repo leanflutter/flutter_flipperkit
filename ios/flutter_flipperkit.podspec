@@ -1,11 +1,11 @@
-flipperkit_version = '0.17.0'
+flipperkit_version = '0.18.0'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.2'
+  s.version          = '0.0.5'
   s.summary          = 'Flipper SDK for Flutter.'
   s.description      = <<-DESC
   Flipper SDK for Flutter.

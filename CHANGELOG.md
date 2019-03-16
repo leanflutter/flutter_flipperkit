@@ -1,3 +1,8 @@
+## 0.0.5
+
+* Add ReduxInspector Plugin
+* Upgrade `flipper` to `0.18.0`
+
 ## 0.0.4
 
 * Fix dart low version dependency failure

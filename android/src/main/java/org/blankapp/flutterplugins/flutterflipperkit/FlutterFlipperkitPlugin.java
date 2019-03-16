@@ -1,6 +1,7 @@
 package org.blankapp.flutterplugins.flutterflipperkit;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -10,6 +11,7 @@ import com.facebook.flipper.plugins.network.NetworkReporter;
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
 import com.facebook.soloader.SoLoader;
 
+import org.blankapp.flutterplugins.flutterflipperkit.plugins.FlipperReduxInspectorPlugin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -33,6 +35,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
 
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
+    private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
 
     public FlutterFlipperkitPlugin(Activity activity) {
@@ -41,6 +44,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
             flipperClient = AndroidFlipperClient.getInstance(activity);
             networkFlipperPlugin = new NetworkFlipperPlugin();
+            flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
             sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity, "FlutterSharedPreferences");
         }
     }
@@ -56,6 +60,11 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
     @Override
     public void onMethodCall(MethodCall call, Result result) {
         final String method = call.method;
+
+        if (method.startsWith("pluginReduxInspector")) {
+            flipperReduxInspectorPlugin.handleMethodCall(call, result);
+            return;
+        }
 
         switch (method) {
             case "clientAddPlugin":
@@ -87,9 +96,21 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
             }
             switch (pluginId) {
                 case NetworkFlipperPlugin.ID:
+                    if (flipperClient.getPlugin(NetworkFlipperPlugin.ID) != null) {
+                        flipperClient.removePlugin(networkFlipperPlugin);
+                    }
                     flipperClient.addPlugin(networkFlipperPlugin);
                     break;
+                case FlipperReduxInspectorPlugin.ID:
+                    if (flipperClient.getPlugin(FlipperReduxInspectorPlugin.ID) != null) {
+                        flipperClient.removePlugin(flipperReduxInspectorPlugin);
+                    }
+                    flipperClient.addPlugin(flipperReduxInspectorPlugin);
+                    break;
                 case "Preferences":
+                    if (flipperClient.getPlugin("Preferences") != null) {
+                        flipperClient.removePlugin(sharedPreferencesFlipperPlugin);
+                    }
                     flipperClient.addPlugin(sharedPreferencesFlipperPlugin);
                     break;
             }

@@ -17,6 +17,8 @@
 - Shared preferences (and UserDefaults) inspector
 ![shared-preferences](https://fbflipper.com/docs/assets/shared-preferences.png)
 
+- Redux inspector
+
 ## 快速开始
 
 ### 必备条件
@@ -31,7 +33,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.4
+  flutter_flipperkit: ^0.0.5
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -82,6 +84,7 @@ void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
   flipperClient.addPlugin(new FlipperNetworkPlugin());
+  flipperClient.addPlugin(new FlipperReduxInspectorPlugin());
   flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
   flipperClient.start();
 
@@ -92,7 +95,7 @@ void main() {
 
 ```
 
-> 请参考 [dio 2.0.x](https://github.com/flutterchina/dio) 的 [集成示例](./example/lib/networking/api_client/api_client.dart) 将 `flutter_flipperkit` 集成到你的项目
+> 请参考 [flutter_starter](https://github.com/blankapp/flutter_starter) 项目，将 `flutter_flipperkit` 集成到你的项目。
 
 ### 运行程序
 
