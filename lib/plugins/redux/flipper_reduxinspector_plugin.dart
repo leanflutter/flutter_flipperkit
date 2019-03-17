@@ -5,13 +5,17 @@ class ActionInfo {
   String uniqueId;
   String actionType;
   int timeStamp;
-  dynamic state;
+  dynamic payload;
+  dynamic prevState;
+  dynamic nextState;
 
   ActionInfo({
     this.uniqueId, 
     this.actionType,
     this.timeStamp, 
-    this.state,
+    this.payload,
+    this.prevState,
+    this.nextState,
   });
 
   Map<String, dynamic> toJson() {
@@ -19,7 +23,9 @@ class ActionInfo {
       'uniqueId'    : uniqueId,
       'actionType'  : actionType,
       'timeStamp'   : timeStamp,
-      'state'       : state,
+      'payload'     : payload,
+      'prevState'   : prevState,
+      'nextState'   : nextState,
     };
   }
 }

@@ -45,7 +45,9 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
                             .put("uniqueId", call.argument("uniqueId"))
                             .put("actionType", call.argument("actionType"))
                             .put("timeStamp", call.argument("timeStamp"))
-                            .put("state", this.convertState(call))
+                            .put("payload", this.convertJsonToString(call, "payload"))
+                            .put("prevState", this.convertJsonToString(call, "prevState"))
+                            .put("nextState", this.convertJsonToString(call, "nextState"))
                             .build();
 
             this.flipperConnection.send("newAction", actionObject);
@@ -53,11 +55,11 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
         }
     }
 
-    private String convertState(MethodCall call) {
+    private String convertJsonToString(MethodCall call, String key) {
         String stateString = null;
-        if (call.hasArgument("state")) {
+        if (call.hasArgument(key)) {
             try {
-                Object argState = call.argument("state");
+                Object argState = call.argument(key);
 
                 if (argState instanceof HashMap) {
                     stateString = new JSONObject((HashMap) argState).toString();
@@ -68,7 +70,7 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
 
             if (stateString == null) {
                 try {
-                    stateString = call.argument("state");
+                    stateString = call.argument(key);
                 } catch (NullPointerException e) { }
             }
         }

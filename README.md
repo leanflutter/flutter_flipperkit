@@ -7,7 +7,7 @@ English | [简体中文](./README.zh_CN.md)
 
 ## Introduction
 
-*Flipper SDK for Flutter helps you debug Flutter apps running in an emulator/simulator or connected physical development devices.*
+*Flipper (Extensible mobile app debugger) for flutter.*
 
 ### Features
 
@@ -33,7 +33,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.5
+  flutter_flipperkit: ^0.0.6
 ```
 
 Change your project `ios/Podfile` file according to the example:

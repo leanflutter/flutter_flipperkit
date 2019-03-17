@@ -5,10 +5,10 @@ flipperkit_version = '0.18.0'
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.5'
-  s.summary          = 'Flipper SDK for Flutter.'
+  s.version          = '0.0.6'
+  s.summary          = 'Flipper (Extensible mobile app debugger) for flutter.'
   s.description      = <<-DESC
-  Flipper SDK for Flutter.
+  Flipper (Extensible mobile app debugger) for flutter.
                        DESC
   s.homepage         = 'https://github.com/lijy91/flutter_flipperkit'
   s.license          = { :file => '../LICENSE' }

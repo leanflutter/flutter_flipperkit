@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Add `payload`、`prevState`、`nextState` to newAction event
+
 ## 0.0.5
 
 * Add ReduxInspector Plugin

@@ -7,7 +7,7 @@
 
 ## 简介
 
-*Flipper SDK for Flutter 可帮助您调试在模拟器或连接的物理开发设备中运行的 Flutter 应用。*
+*Flipper (Extensible mobile app debugger) for flutter.*
 
 ### 特性
 
@@ -33,7 +33,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.5
+  flutter_flipperkit: ^0.0.6
 ```
 
 根据示例更改项目的 ios/Podfile 文件：

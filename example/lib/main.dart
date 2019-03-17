@@ -86,7 +86,10 @@ class _MyAppState extends State<MyApp> {
                   uniqueId: new Uuid().v4(),
                   actionType: 'LoginSuccess',
                   timeStamp: new DateTime.now().millisecondsSinceEpoch,
-                  state: new Map()
+                  payload: new Map()
+                    ..putIfAbsent("username", () => "lijy91@foxmail.com")
+                    ..putIfAbsent("password", () => "123456"),
+                  nextState: new Map()
                     ..putIfAbsent("user", () => { "name": "JianyingLi"})
                 );
                 flipperReduxInspectorPlugin.report(actionInfo);

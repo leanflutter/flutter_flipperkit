@@ -23,13 +23,17 @@
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
     if ([call.method hasSuffix:@"Report"]) {
-        NSDictionary *state = call.arguments[@"state"];
+        NSDictionary *payload = call.arguments[@"payload"];
+        NSDictionary *prevState = call.arguments[@"prevState"];
+        NSDictionary *nextState = call.arguments[@"nextState"];
 
         NSDictionary<NSString *, id> *actionObject = @{
                                                        @"uniqueId": call.arguments[@"uniqueId"],
                                                        @"actionType": call.arguments[@"actionType"],
                                                        @"timeStamp": call.arguments[@"timeStamp"],
-                                                       @"state": state ? state : [NSNull null],
+                                                       @"payload": payload ? payload : [NSNull null],
+                                                       @"prevState": prevState ? prevState : [NSNull null],
+                                                       @"nextState": nextState ? nextState : [NSNull null],
                                                        };
 
         [self.flipperConnection send:@"newAction" withParams:actionObject];
