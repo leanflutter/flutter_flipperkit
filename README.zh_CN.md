@@ -5,6 +5,22 @@
 
 [English](./README.md) | 简体中文
 
+Table of Contents
+=================
+
+  * [简介](#简介)
+      * [特性](#特性)
+  * [快速开始](#快速开始)
+      * [必备条件](#必备条件)
+      * [安装](#安装)
+      * [用法](#用法)
+      * [运行程序](#运行程序)
+  * [已知问题（需注意）](#已知问题需注意)
+  * [探讨](#探讨)
+  * [许可证](#许可证)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## 简介
 
 *Flipper (Extensible mobile app debugger) for flutter.*

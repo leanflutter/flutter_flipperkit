@@ -5,6 +5,22 @@
 
 English | [简体中文](./README.zh_CN.md)
 
+Table of Contents
+=================
+
+  * [Introduction](#introduction)
+      * [Features](#features)
+  * [Quick Start](#quick-start)
+      * [Prerequisites](#prerequisites)
+      * [Installation](#installation)
+      * [Usage](#usage)
+      * [Run the app](#run-the-app)
+  * [Known Issues (to note)](#known-issues-to-note)
+  * [Discussion](#discussion)
+  * [License](#license)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## Introduction
 
 *Flipper (Extensible mobile app debugger) for flutter.*
