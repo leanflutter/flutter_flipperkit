@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/services.dart';
 import '../../flipper_plugin.dart';
+import './flipper_http_overrides.dart';
 
 class RequestInfo {
   String requestId;
@@ -67,6 +69,10 @@ class ResponseInfo {
 class FlipperNetworkPlugin extends FlipperPlugin {
   static const String ID = 'Network';
   static const MethodChannel _channel = const MethodChannel('flutter_flipperkit'); 
+
+  FlipperNetworkPlugin() {
+    HttpOverrides.global = FlipperHttpOverrides();
+  }
 
   @override
   String getId() {
