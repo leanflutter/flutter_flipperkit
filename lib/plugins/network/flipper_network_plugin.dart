@@ -70,8 +70,12 @@ class FlipperNetworkPlugin extends FlipperPlugin {
   static const String ID = 'Network';
   static const MethodChannel _channel = const MethodChannel('flutter_flipperkit'); 
 
-  FlipperNetworkPlugin() {
-    HttpOverrides.global = FlipperHttpOverrides();
+  FlipperNetworkPlugin({
+    useHttpOverrides = true,
+  }) {
+    if (useHttpOverrides) {
+      HttpOverrides.global = FlipperHttpOverrides();
+    }
   }
 
   @override

@@ -59,12 +59,12 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
         String stateString = null;
         if (call.hasArgument(key)) {
             try {
-                Object argState = call.argument(key);
+                Object argValue = call.argument(key);
 
-                if (argState instanceof HashMap) {
-                    stateString = new JSONObject((HashMap) argState).toString();
-                } else if (argState instanceof ArrayList) {
-                    stateString = new JSONArray((ArrayList) argState).toString();
+                if (argValue instanceof HashMap) {
+                    stateString = new JSONObject((HashMap) argValue).toString();
+                } else if (argValue instanceof ArrayList) {
+                    stateString = new JSONArray((ArrayList) argValue).toString();
                 }
             } catch (ClassCastException e) { }
 

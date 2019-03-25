@@ -38,6 +38,7 @@
 
         [self.flipperConnection send:@"newAction" withParams:actionObject];
     }
+    result([NSNumber numberWithBool:YES]);
 }
 
 #pragma mark - Private methods

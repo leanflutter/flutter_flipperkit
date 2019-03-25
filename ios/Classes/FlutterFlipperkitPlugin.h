@@ -1,4 +1,4 @@
 #import <Flutter/Flutter.h>
 
-@interface FlutterFlipperkitPlugin : NSObject<FlutterPlugin>
+@interface FlutterFlipperkitPlugin : NSObject<FlutterPlugin, FlutterStreamHandler>
 @end

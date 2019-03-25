@@ -9,18 +9,12 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
 
   final String uniqueId;
   final HttpClientResponse response;
-  String bodyString;
 
   StreamController<List<int>> streamController = new StreamController();
 
   FlipperHttpClientResponse(this.uniqueId, this.response) {
     _flipperNetworkPlugin =
         FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
-
-    streamController.stream
-      .transform(Utf8Decoder(allowMalformed: true)).listen((data) {
-        this.bodyString = data;
-      });
   }
 
   @override
@@ -54,15 +48,14 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
       streamController.sink.add(event);
     };
 
-    final _onError = (error) async {
-      onError(error);
-
-      await this._reportResponse(uniqueId);
+    final _onError = (error, StackTrace stackTrace) async {
+      onError(error, stackTrace);
     };
 
     final _onDone = () async {
       onDone();
 
+      streamController.sink.close();
       await this._reportResponse(uniqueId);
     };
 
@@ -94,12 +87,18 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
       }
     });
 
+    var body;
+
+    try {
+      body = await streamController.stream.transform(Utf8Decoder(allowMalformed: false)).join();
+    } catch (e) { }
+
     ResponseInfo responseInfo = new ResponseInfo(
       requestId: uniqueId,
       timeStamp: new DateTime.now().millisecondsSinceEpoch,
       statusCode: response.statusCode,
       headers: headers,
-      body: bodyString,
+      body: body,
     );
 
     _flipperNetworkPlugin.reportResponse(responseInfo);

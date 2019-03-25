@@ -41,7 +41,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 Before starting make sure you have:
 
-- Installed [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- Installed [Flutter Debugger](https://github.com/blankapp/flutter-debugger) or [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
 
 ### Installation
 
@@ -49,7 +49,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.6
+  flutter_flipperkit: ^0.0.7
 ```
 
 Change your project `ios/Podfile` file according to the example:
@@ -111,7 +111,7 @@ void main() {
 
 ```
 
-> Please refer to  [flutter_starter](https://github.com/blankapp/flutter_starter) project, to integrate `flutter_flipperkit` into your project.
+> Please refer to  [flutter-debugger-examples](https://github.com/blankapp/flutter-debugger-examples) project, to integrate `flutter_flipperkit` into your project.
 
 ### Run the app
 
@@ -122,6 +122,13 @@ $ flutter run
 ## Known Issues (to note)
 
 - [iOS] If you use cocoapods 1.6.0 or later, does not support the `use_frameworks!`
+
+## Related Links
+
+- https://github.com/blankapp/flutter_flipperkit_plugins
+- https://github.com/blankapp/flutter-debugger
+- https://github.com/blankapp/flutter-debugger-docs
+- https://github.com/blankapp/flutter-debugger-examples
 
 ## Discussion
 

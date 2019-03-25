@@ -1,10 +1,16 @@
+## 0.0.7
+
+* Add `DatabaseBroswer` Plugin
+* Add `useHttpOverrides` param to `Network` Plugin
+* Fixed `ReduxInspector` bugs
+
 ## 0.0.6
 
 * Add `payload`、`prevState`、`nextState` to newAction event
 
 ## 0.0.5
 
-* Add ReduxInspector Plugin
+* Add `ReduxInspector` Plugin
 * Upgrade `flipper` to `0.18.0`
 
 ## 0.0.4

@@ -1,7 +1,6 @@
 package org.blankapp.flutterplugins.flutterflipperkit;
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -11,6 +10,7 @@ import com.facebook.flipper.plugins.network.NetworkReporter;
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
 import com.facebook.soloader.SoLoader;
 
+import org.blankapp.flutterplugins.flutterflipperkit.plugins.FlipperDatabaseBrowserPlugin;
 import org.blankapp.flutterplugins.flutterflipperkit.plugins.FlipperReduxInspectorPlugin;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -30,22 +31,25 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * FlutterFlipperkitPlugin
  */
-public class FlutterFlipperkitPlugin implements MethodCallHandler {
-    private final Activity activity;
+public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.StreamHandler {
+    private EventChannel.EventSink eventSink;
 
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
-    private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
 
+    private FlipperDatabaseBrowserPlugin flipperDatabaseBrowserPlugin;
+    private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
+
     public FlutterFlipperkitPlugin(Activity activity) {
-        this.activity = activity;
         SoLoader.init(activity.getApplication(), false);
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
             flipperClient = AndroidFlipperClient.getInstance(activity);
             networkFlipperPlugin = new NetworkFlipperPlugin();
-            flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
             sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity, "FlutterSharedPreferences");
+
+            flipperDatabaseBrowserPlugin = new FlipperDatabaseBrowserPlugin();
+            flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
         }
     }
 
@@ -53,15 +57,22 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
+        final FlutterFlipperkitPlugin flipperkitPlugin = new FlutterFlipperkitPlugin(registrar.activity());
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_flipperkit");
-        channel.setMethodCallHandler(new FlutterFlipperkitPlugin(registrar.activity()));
+        channel.setMethodCallHandler(flipperkitPlugin);
+
+        final EventChannel eventChannel = new EventChannel(registrar.messenger(), "flutter_flipperkit/event_channel");
+        eventChannel.setStreamHandler(flipperkitPlugin);
     }
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
         final String method = call.method;
 
-        if (method.startsWith("pluginReduxInspector")) {
+        if (method.startsWith("pluginDatabaseBrowser")) {
+            flipperDatabaseBrowserPlugin.handleMethodCall(call, result);
+            return;
+        } else if (method.startsWith("pluginReduxInspector")) {
             flipperReduxInspectorPlugin.handleMethodCall(call, result);
             return;
         }
@@ -94,24 +105,23 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
                 result.error("", "", "");
                 return;
             }
+            // 当插件已经添加时，避免再次添加
+            if (flipperClient.getPlugin(pluginId) != null) {
+                result.success(true);
+                return;
+            }
             switch (pluginId) {
                 case NetworkFlipperPlugin.ID:
-                    if (flipperClient.getPlugin(NetworkFlipperPlugin.ID) != null) {
-                        flipperClient.removePlugin(networkFlipperPlugin);
-                    }
                     flipperClient.addPlugin(networkFlipperPlugin);
                     break;
-                case FlipperReduxInspectorPlugin.ID:
-                    if (flipperClient.getPlugin(FlipperReduxInspectorPlugin.ID) != null) {
-                        flipperClient.removePlugin(flipperReduxInspectorPlugin);
-                    }
-                    flipperClient.addPlugin(flipperReduxInspectorPlugin);
-                    break;
                 case "Preferences":
-                    if (flipperClient.getPlugin("Preferences") != null) {
-                        flipperClient.removePlugin(sharedPreferencesFlipperPlugin);
-                    }
                     flipperClient.addPlugin(sharedPreferencesFlipperPlugin);
+                    break;
+                case FlipperDatabaseBrowserPlugin.ID:
+                    flipperClient.addPlugin(flipperDatabaseBrowserPlugin);
+                    break;
+                case FlipperReduxInspectorPlugin.ID:
+                    flipperClient.addPlugin(flipperReduxInspectorPlugin);
                     break;
             }
         }
@@ -208,5 +218,16 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler {
             }
         }
         return list;
+    }
+
+    @Override
+    public void onListen(Object args, EventChannel.EventSink eventSink) {
+        this.eventSink = eventSink;
+        flipperDatabaseBrowserPlugin.setEventSink(eventSink);
+    }
+
+    @Override
+    public void onCancel(Object args) {
+        this.eventSink = null;
     }
 }

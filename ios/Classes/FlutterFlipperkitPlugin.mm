@@ -3,13 +3,18 @@
 #import <FlipperKitUserDefaultsPlugin/FKUserDefaultsPlugin.h>
 #import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
+#import "FlipperDatabaseBrowserPlugin.h"
 #import "FlipperReduxInspectorPlugin.h"
 
 @implementation FlutterFlipperkitPlugin {
+    FlutterEventSink _eventSink;
     FlipperClient *flipperClient;
+    // Built-in Plugins
     FlipperKitNetworkPlugin *flipperKitNetworkPlugin;
-    FlipperReduxInspectorPlugin *flipperKitReduxInspectorPlugin;
     FKUserDefaultsPlugin *fKUserDefaultsPlugin;
+    // Custom plugins
+    FlipperDatabaseBrowserPlugin *flipperDatabaseBrowserPlugin;
+    FlipperReduxInspectorPlugin *flipperReduxInspectorPlugin;
 }
 
 - (instancetype)init
@@ -19,8 +24,10 @@
         flipperClient = [FlipperClient sharedClient];
       
         flipperKitNetworkPlugin = [FlipperKitNetworkPlugin new];
-        flipperKitReduxInspectorPlugin = [FlipperReduxInspectorPlugin new];
         fKUserDefaultsPlugin = [[FKUserDefaultsPlugin alloc] initWithSuiteName:nil];
+        
+        flipperDatabaseBrowserPlugin = [FlipperDatabaseBrowserPlugin new];
+        flipperReduxInspectorPlugin = [FlipperReduxInspectorPlugin new];
     }
     return self;
 }
@@ -31,6 +38,11 @@
                                      binaryMessenger:[registrar messenger]];
     FlutterFlipperkitPlugin* instance = [[FlutterFlipperkitPlugin alloc] init];
     [registrar addMethodCallDelegate:instance channel:channel];
+    
+    FlutterEventChannel* eventChannel =
+        [FlutterEventChannel eventChannelWithName:@"flutter_flipperkit/event_channel"
+                              binaryMessenger:[registrar messenger]];
+    [eventChannel setStreamHandler:instance];
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
@@ -44,25 +56,48 @@
         [self pluginNetworkReportRequest:call result:result];
     } else if ([@"pluginNetworkReportResponse" isEqualToString:call.method]) {
         [self pluginNetworkReportResponse:call result:result];
+    } else if ([call.method hasPrefix:@"pluginDatabaseBrowser"]) {
+        [flipperDatabaseBrowserPlugin handleMethodCall:call result:result];
     } else if ([call.method hasPrefix:@"pluginReduxInspector"]) {
-        [flipperKitReduxInspectorPlugin handleMethodCall: call result:result];
+        [flipperReduxInspectorPlugin handleMethodCall: call result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
 }
 
+- (FlutterError*)onListenWithArguments:(id)arguments eventSink:(FlutterEventSink)eventSink {
+    _eventSink = eventSink;
+    
+    if (flipperDatabaseBrowserPlugin != nil) {
+        [flipperDatabaseBrowserPlugin setEventSink: eventSink];
+    }
+
+    return nil;
+}
+
+- (FlutterError*)onCancelWithArguments:(id)arguments {
+    _eventSink = nil;
+
+    return nil;
+}
+
 - (void) clientAddPlugin:(FlutterMethodCall*)call result:(FlutterResult)result {
     NSString *pluginId = call.arguments[@"id"];
 
+    // 当插件已经添加时，避免再次添加
+    if ([flipperClient pluginWithIdentifier: pluginId] != nil) {
+        result([NSNumber numberWithBool:YES]);
+        return;
+    }
+
     if ([pluginId isEqualToString:@"Network"]) {
-        [flipperClient removePlugin:flipperKitNetworkPlugin];
         [flipperClient addPlugin:flipperKitNetworkPlugin];
     } else if ([pluginId isEqualToString:@"Preferences"]) {
-        [flipperClient removePlugin:fKUserDefaultsPlugin];
         [flipperClient addPlugin:fKUserDefaultsPlugin];
+    } else if ([pluginId isEqualToString:@"DatabaseBrowser"]) {
+        [flipperClient addPlugin:flipperDatabaseBrowserPlugin];
     } else if ([pluginId isEqualToString:@"ReduxInspector"]) {
-        [flipperClient removePlugin:flipperKitReduxInspectorPlugin];
-        [flipperClient addPlugin:flipperKitReduxInspectorPlugin];
+        [flipperClient addPlugin:flipperReduxInspectorPlugin];
     }
     result([NSNumber numberWithBool:YES]);
 }
@@ -142,7 +177,7 @@
     if (data == nil) {
         try {
             NSString *jsonString = call.arguments[@"body"];
-            data = [NSData dataWithBytes:jsonString.UTF8String length:jsonString.length];
+            data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
         } catch (NSException *e) {}
     }
   

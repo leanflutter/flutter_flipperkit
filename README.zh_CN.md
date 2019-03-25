@@ -41,7 +41,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 开始之前确保你已安装：
 
-- 已安装 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- 已安装 [Flutter Debugger](https://github.com/blankapp/flutter-debugger) 或 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
 
 ### 安装
 
@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.6
+  flutter_flipperkit: ^0.0.7
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -111,7 +111,7 @@ void main() {
 
 ```
 
-> 请参考 [flutter_starter](https://github.com/blankapp/flutter_starter) 项目，将 `flutter_flipperkit` 集成到你的项目。
+> 请参考 [flutter-debugger-examples](https://github.com/blankapp/flutter-debugger-examples) 项目，将 `flutter_flipperkit` 集成到你的项目。
 
 ### 运行程序
 
@@ -122,6 +122,13 @@ $ flutter run
 ## 已知问题（需注意）
 
 - 【iOS】如果使用 cocoapods 1.6.0 及以上版本，不支持 `use_frameworks!`
+
+## 相关链接
+
+- https://github.com/blankapp/flutter_flipperkit_plugins
+- https://github.com/blankapp/flutter-debugger
+- https://github.com/blankapp/flutter-debugger-docs
+- https://github.com/blankapp/flutter-debugger-examples
 
 ## 探讨
 
