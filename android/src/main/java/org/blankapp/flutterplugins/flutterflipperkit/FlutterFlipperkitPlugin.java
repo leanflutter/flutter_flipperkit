@@ -208,13 +208,26 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     }
 
     private List<NetworkReporter.Header> convertHeader(MethodCall call) {
-        Map<String, String> argHeaders = call.argument("headers");
+        Map<String, Object> argHeaders = call.argument("headers");
         List<NetworkReporter.Header> list = new ArrayList<>();;
 
         if (argHeaders != null) {
             Set<String> keys = argHeaders.keySet();
             for (String key : keys) {
-                list.add(new NetworkReporter.Header(key, argHeaders.get(key)));
+                Object value = argHeaders.get(key);
+
+                String valueString;
+                if (value instanceof ArrayList) {
+                    List values = (ArrayList) value;
+                    StringBuilder builder = new StringBuilder();
+                    for(Object obj : values) {
+                        builder.append(obj);
+                    }
+                    valueString = builder.toString();
+                } else {
+                    valueString = (String) value;
+                }
+                list.add(new NetworkReporter.Header(key, valueString));
             }
         }
         return list;

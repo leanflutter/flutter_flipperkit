@@ -81,8 +81,14 @@ public class FlipperDatabaseBrowserPlugin implements FlipperPlugin {
                             .put("results", results)
                             .build();
 
-            this.flipperConnection.send("newQueryResult", flipperObject);
+            this.sendData("newQueryResult", flipperObject);
         }
         result.success(true);
+    }
+
+    private void sendData(String method, FlipperObject data) {
+        if (this.flipperConnection == null) return;
+
+        this.flipperConnection.send(method, data);
     }
 }

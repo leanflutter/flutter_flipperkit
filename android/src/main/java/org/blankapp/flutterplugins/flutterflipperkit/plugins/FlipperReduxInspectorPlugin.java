@@ -50,7 +50,8 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
                             .put("nextState", this.convertJsonToString(call, "nextState"))
                             .build();
 
-            this.flipperConnection.send("newAction", actionObject);
+            this.sendData("newAction", actionObject);
+
             result.success(true);
         }
     }
@@ -76,5 +77,11 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
         }
 
         return stateString;
+    }
+
+    private void sendData(String method, FlipperObject data) {
+        if (this.flipperConnection == null) return;
+
+        this.flipperConnection.send(method, data);
     }
 }

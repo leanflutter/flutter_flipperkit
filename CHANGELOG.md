@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Fixed `NetworkPlugin` (android) bugs
+
 ## 0.0.7
 
 * Add `DatabaseBroswer` Plugin
