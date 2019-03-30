@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.8
+  flutter_flipperkit: ^0.0.9
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -84,6 +84,26 @@ android {
 +android.useAndroidX=true
 +android.enableJetifier=true
 ```
+
+`android/settings.gradle`:
+```diff
+...
+
+plugins.each { name, path ->
+    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+    include ":$name"
+    project(":$name").projectDir = pluginDirectory
+
++    if (name == 'flutter_flipperkit') {
++        include ':flipper-no-op'
++        project(':flipper-no-op').projectDir = new File(pluginDirectory, 'flipper-no-op')
++    }
+}
+
+...
+
+```
+
 
 您可以通过命令行安装软件包：
 

@@ -1,3 +1,8 @@
+## 0.0.9
+
+* Add `flipper-no-op` module
+* Upgrade `flipper` to `0.19.0`
+
 ## 0.0.8
 
 * Fixed `NetworkPlugin` (android) bugs

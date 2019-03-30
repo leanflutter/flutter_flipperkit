@@ -13,3 +13,6 @@ plugins.each { name, path ->
     include ":$name"
     project(":$name").projectDir = pluginDirectory
 }
+
+include ':flipper-no-op'
+project(':flipper-no-op').projectDir = new File(rootProject.projectDir, '../../android/flipper-no-op')

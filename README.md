@@ -49,7 +49,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.8
+  flutter_flipperkit: ^0.0.9
 ```
 
 Change your project `ios/Podfile` file according to the example:
@@ -83,6 +83,25 @@ android {
 ```diff
 +android.useAndroidX=true
 +android.enableJetifier=true
+```
+
+`android/settings.gradle`:
+```diff
+...
+
+plugins.each { name, path ->
+    def pluginDirectory = flutterProjectRoot.resolve(path).resolve('android').toFile()
+    include ":$name"
+    project(":$name").projectDir = pluginDirectory
+
++    if (name == 'flutter_flipperkit') {
++        include ':flipper-no-op'
++        project(':flipper-no-op').projectDir = new File(pluginDirectory, 'flipper-no-op')
++    }
+}
+
+...
+
 ```
 
 You can install packages from the command line:

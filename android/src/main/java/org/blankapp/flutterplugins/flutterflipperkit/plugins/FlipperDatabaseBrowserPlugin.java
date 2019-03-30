@@ -1,7 +1,5 @@
 package org.blankapp.flutterplugins.flutterflipperkit.plugins;
 
-import android.os.Handler;
-import android.os.Looper;
 import android.util.Log;
 
 import com.facebook.flipper.core.FlipperArray;
@@ -12,7 +10,6 @@ import com.facebook.flipper.core.FlipperReceiver;
 import com.facebook.flipper.core.FlipperResponder;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;

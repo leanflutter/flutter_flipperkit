@@ -34,6 +34,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.StreamHandler {
     private EventChannel.EventSink eventSink;
 
+    private Activity activity;
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
@@ -42,6 +43,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
 
     public FlutterFlipperkitPlugin(Activity activity) {
+        this.activity = activity;
         SoLoader.init(activity.getApplication(), false);
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
             flipperClient = AndroidFlipperClient.getInstance(activity);
@@ -67,6 +69,11 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
+        if (!FlipperUtils.shouldEnableFlipper(activity)) {
+            result.success(true);
+            return;
+        }
+
         final String method = call.method;
 
         if (method.startsWith("pluginDatabaseBrowser")) {
