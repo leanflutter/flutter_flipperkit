@@ -104,7 +104,6 @@ plugins.each { name, path ->
 
 ```
 
-
 您可以通过命令行安装软件包：
 
 ```bash
