@@ -49,14 +49,12 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.9
+  flutter_flipperkit: ^0.0.10
 ```
 
 Change your project `ios/Podfile` file according to the example:
 
 ```diff
-+source 'https://github.com/facebook/flipper.git'
-+source 'https://github.com/CocoaPods/Specs'
 # Uncomment this line to define a global platform for your project
 -# platform :ios, '8.0'
 +platform :ios, '9.0'
@@ -140,7 +138,7 @@ $ flutter run
 
 ## Known Issues (to note)
 
-- [iOS] If you use cocoapods 1.6.0 or later, does not support the `use_frameworks!`
+- 【iOS】If you use `use_frameworks!` in your Podfile, Please see the [issue](https://github.com/facebook/flipper/issues/254).
 
 ## Related Links
 

@@ -1,3 +1,7 @@
+## 0.0.10
+
+* Upgrade `flipper` to `0.20.0`
+
 ## 0.0.9
 
 * Add `flipper-no-op` module

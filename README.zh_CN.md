@@ -49,14 +49,12 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.9
+  flutter_flipperkit: ^0.0.10
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
 
 ```diff
-+source 'https://github.com/facebook/flipper.git'
-+source 'https://github.com/CocoaPods/Specs'
 # Uncomment this line to define a global platform for your project
 -# platform :ios, '8.0'
 +platform :ios, '9.0'
@@ -140,7 +138,7 @@ $ flutter run
 
 ## 已知问题（需注意）
 
-- 【iOS】如果使用 cocoapods 1.6.0 及以上版本，不支持 `use_frameworks!`
+- 【iOS】如果您在Podfile中使用`use_frameworks！`，请查看该 [issue](https://github.com/facebook/flipper/issues/254)。
 
 ## 相关链接
 
