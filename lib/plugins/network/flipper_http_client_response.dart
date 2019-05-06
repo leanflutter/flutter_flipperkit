@@ -101,7 +101,7 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
       body: body,
     );
 
-    _flipperNetworkPlugin.reportResponse(responseInfo);
+    _flipperNetworkPlugin?.reportResponse(responseInfo);
     return true;
   }
 }

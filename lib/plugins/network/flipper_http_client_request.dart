@@ -134,7 +134,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
       body: body,
     );
 
-    _flipperNetworkPlugin.reportRequest(requestInfo);
+    _flipperNetworkPlugin?.reportRequest(requestInfo);
     return true;
   }
 }
