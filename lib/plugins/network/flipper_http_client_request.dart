@@ -16,24 +16,42 @@ class FlipperHttpClientRequest implements HttpClientRequest {
     _flipperNetworkPlugin =
         FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
   }
-  
-  @override
-  bool bufferOutput;
 
   @override
-  int contentLength;
+  bool get bufferOutput => request.bufferOutput;
 
   @override
-  Encoding encoding;
+  set bufferOutput(bool value) => request.bufferOutput = value;
 
   @override
-  bool followRedirects;
+  int get contentLength => request.contentLength;
 
   @override
-  int maxRedirects;
+  set contentLength(int value) => request.contentLength = value;
 
   @override
-  bool persistentConnection;
+  Encoding get encoding => request.encoding;
+
+  @override
+  set encoding(Encoding value) => request.encoding = value;
+
+  @override
+  bool get followRedirects => request.followRedirects;
+
+  @override
+  set followRedirects(bool value) => request.followRedirects = value;
+
+  @override
+  int get maxRedirects => request.maxRedirects;
+
+  @override
+  set maxRedirects(int value) => request.maxRedirects = value;
+
+  @override
+  bool get persistentConnection => request.persistentConnection;
+
+  @override
+  set persistentConnection(bool value) => request.persistentConnection = value;
 
   @override
   void add(List<int> data) {
