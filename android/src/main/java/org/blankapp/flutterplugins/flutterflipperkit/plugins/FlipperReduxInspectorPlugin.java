@@ -1,8 +1,7 @@
 package org.blankapp.flutterplugins.flutterflipperkit.plugins;
 
-import com.facebook.flipper.core.FlipperConnection;
 import com.facebook.flipper.core.FlipperObject;
-import com.facebook.flipper.core.FlipperPlugin;
+import com.facebook.flipper.plugins.common.BufferingFlipperPlugin;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -13,29 +12,12 @@ import java.util.HashMap;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
-public class FlipperReduxInspectorPlugin implements FlipperPlugin {
+public class FlipperReduxInspectorPlugin extends BufferingFlipperPlugin {
     public static final String ID = "ReduxInspector";
-
-    private FlipperConnection flipperConnection;
 
     @Override
     public String getId() {
         return ID;
-    }
-
-    @Override
-    public void onConnect(FlipperConnection connection) throws Exception {
-        this.flipperConnection = connection;
-    }
-
-    @Override
-    public void onDisconnect() throws Exception {
-        this.flipperConnection = null;
-    }
-
-    @Override
-    public boolean runInBackground() {
-        return false;
     }
 
     public void handleMethodCall(MethodCall call, MethodChannel.Result result) {
@@ -50,7 +32,7 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
                             .put("nextState", this.convertJsonToString(call, "nextState"))
                             .build();
 
-            this.sendData("newAction", actionObject);
+            this.send("newAction", actionObject);
 
             result.success(true);
         }
@@ -77,11 +59,5 @@ public class FlipperReduxInspectorPlugin implements FlipperPlugin {
         }
 
         return stateString;
-    }
-
-    private void sendData(String method, FlipperObject data) {
-        if (this.flipperConnection == null) return;
-
-        this.flipperConnection.send(method, data);
     }
 }

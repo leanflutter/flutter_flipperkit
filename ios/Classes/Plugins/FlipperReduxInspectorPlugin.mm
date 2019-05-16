@@ -1,20 +1,15 @@
 #import <Flutter/Flutter.h>
 #import <FlipperKit/FlipperConnection.h>
 #import <FlipperKit/FlipperResponder.h>
+#import "SKBufferingPlugin+CPPInitialization.h"
 #import "FlipperReduxInspectorPlugin.h"
-
-@interface FlipperReduxInspectorPlugin ()
-@property (nonatomic, strong) id<FlipperConnection> flipperConnection;
-@end
 
 @implementation FlipperReduxInspectorPlugin
 
-- (void)didConnect:(id<FlipperConnection>)connection {
-    self.flipperConnection = connection;
-}
-
-- (void)didDisconnect {
-    self.flipperConnection = nil;
+- (instancetype)init {
+    if (self = [super initWithQueue:dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)]) {
+    }
+    return self;
 }
 
 - (NSString *)identifier {
@@ -36,7 +31,7 @@
                                                        @"nextState": nextState ? nextState : [NSNull null],
                                                        };
 
-        [self.flipperConnection send:@"newAction" withParams:actionObject];
+        [self send:@"newAction" sonarObject:actionObject];
     }
     result([NSNumber numberWithBool:YES]);
 }

@@ -1,3 +1,7 @@
+## 0.0.11
+
+* `ReduxInspector` plugin supports background receiving actions
+
 ## 0.0.10
 
 * Upgrade `flipper` to `0.20.0`
