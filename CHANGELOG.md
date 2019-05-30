@@ -1,3 +1,7 @@
+## 0.0.12
+
+* Add `BufferingFlipperPlugin` to `flipper-no-op` module
+
 ## 0.0.11
 
 * `ReduxInspector` plugin supports background receiving actions

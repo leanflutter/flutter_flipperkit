@@ -49,7 +49,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.11
+  flutter_flipperkit: ^0.0.12
 ```
 
 Change your project `ios/Podfile` file according to the example:
