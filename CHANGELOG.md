@@ -1,3 +1,8 @@
+## 0.0.13
+
+* `Network` plugin supports `flutter` dev 1.7.3
+* Add `fliter` to `FlipperNetworkPlugin`
+
 ## 0.0.12
 
 * Add `BufferingFlipperPlugin` to `flipper-no-op` module

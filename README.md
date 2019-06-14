@@ -49,7 +49,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.12
+  flutter_flipperkit: ^0.0.13
 ```
 
 Change your project `ios/Podfile` file according to the example:
@@ -116,7 +116,16 @@ import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
-  flipperClient.addPlugin(new FlipperNetworkPlugin());
+  flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // Optional, for filtering request
+    filter: (HttpClientRequest request) {
+      String url = '${request.uri}';
+      if (url.startsWith('https://via.placeholder.com') || url.startsWith('https://gravatar.com')) {
+        return false;
+      }
+      return true;
+    }
+  ));
   flipperClient.addPlugin(new FlipperReduxInspectorPlugin());
   flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
   flipperClient.start();

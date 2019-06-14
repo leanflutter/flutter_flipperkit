@@ -71,10 +71,14 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
   @override
   Future<HttpClientResponse> close() async {
-    await this._reportRequest(uniqueId, request);
+    bool skipped = _flipperNetworkPlugin.filter == null || !_flipperNetworkPlugin.filter(request);
+
+    if (!skipped) {
+      await this._reportRequest(uniqueId, request);
+    }
     final response = await request.close();
 
-    return await withInterceptor(response);
+    return skipped ? response : await withInterceptor(response);
   }
 
   @override

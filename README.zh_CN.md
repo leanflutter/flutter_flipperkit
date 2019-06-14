@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.12
+  flutter_flipperkit: ^0.0.13
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -116,7 +116,16 @@ import 'package:flutter_flipperkit/flutter_flipperkit.dart';
 void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
-  flipperClient.addPlugin(new FlipperNetworkPlugin());
+  flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // 可选， 用于过滤请求
+    filter: (HttpClientRequest request) {
+      String url = '${request.uri}';
+      if (url.startsWith('https://via.placeholder.com') || url.startsWith('https://gravatar.com')) {
+        return false;
+      }
+      return true;
+    }
+  ));
   flipperClient.addPlugin(new FlipperReduxInspectorPlugin());
   flipperClient.addPlugin(new FlipperSharedPreferencesPlugin());
   flipperClient.start();
