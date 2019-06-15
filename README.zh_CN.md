@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.13
+  flutter_flipperkit: ^0.0.14
 ```
 
 根据示例更改项目的 ios/Podfile 文件：

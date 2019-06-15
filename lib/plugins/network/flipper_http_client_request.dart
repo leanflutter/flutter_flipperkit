@@ -10,7 +10,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
   final String uniqueId;
   final HttpClientRequest request;
-  Stream<List<int>> requestStream;
+  StreamController<List<int>> streamController = new StreamController();
 
   FlipperHttpClientRequest(this.uniqueId, this.request) {
     _flipperNetworkPlugin =
@@ -65,8 +65,15 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
   @override
   Future addStream(Stream<List<int>> stream) {
-    requestStream = stream;
-    return request.addStream(stream);
+    Stream<List<int>> broadcastStream = stream.asBroadcastStream();
+
+    broadcastStream.listen(
+      (List<int> event) {
+        streamController.sink.add(event);
+      },
+    );
+
+    return request.addStream(broadcastStream);
   }
 
   @override
@@ -135,16 +142,15 @@ class FlipperHttpClientRequest implements HttpClientRequest {
     Map<String, dynamic> headers = new Map();
     request.headers.forEach((String name, List<String> values) {
       if (values != null && values.length > 0) {
-        headers.putIfAbsent(name, () => values);
+        headers.putIfAbsent(name, () => values.length == 1 ? values[0] : values);
       }
     });
 
     var body;
 
     try {
-      if (requestStream != null) {
-        body = await requestStream.transform(Utf8Decoder(allowMalformed: false)).join();
-      }
+      if (!streamController.isClosed) streamController.close();
+      body = await streamController.stream.transform(Utf8Decoder(allowMalformed: false)).join();
     } catch (e) { }
 
     RequestInfo requestInfo = new RequestInfo(

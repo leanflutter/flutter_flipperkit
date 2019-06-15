@@ -58,7 +58,6 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
     final _onDone = () async {
       onDone();
 
-      streamController.sink.close();
       await this._reportResponse(uniqueId);
     };
 
@@ -93,6 +92,7 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
     var body;
 
     try {
+      if (!streamController.isClosed) streamController.close();
       body = await streamController.stream.transform(Utf8Decoder(allowMalformed: false)).join();
     } catch (e) { }
 

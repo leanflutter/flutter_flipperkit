@@ -1,3 +1,7 @@
+## 0.0.14
+
+* Fixed `Netword` plugin Could not get request body
+
 ## 0.0.13
 
 * `Network` plugin supports `flutter` dev 1.7.3
