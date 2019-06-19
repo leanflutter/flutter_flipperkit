@@ -1,3 +1,7 @@
+## 0.0.15
+
+* Downgrade flutter stable version
+
 ## 0.0.14
 
 * Fixed `Netword` plugin Could not get request body

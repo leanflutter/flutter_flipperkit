@@ -27,7 +27,7 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
   int get contentLength => response.contentLength;
 
   // @override
-  HttpClientResponseCompressionState get compressionState => response.compressionState;
+  // HttpClientResponseCompressionState get compressionState => response.compressionState;
 
   @override
   List<Cookie> get cookies => response.cookies;
