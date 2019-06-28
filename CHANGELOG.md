@@ -1,3 +1,7 @@
+## 0.0.16
+
+* Upgrade `flipper` to `0.22.0`
+
 ## 0.0.15
 
 * Downgrade flutter stable version

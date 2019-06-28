@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.15
+  flutter_flipperkit: ^0.0.16
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
@@ -137,7 +137,7 @@ void main() {
 
 ```
 
-> 请参考 [flutter-debugger-examples](https://github.com/blankapp/flutter-debugger-examples) 项目，将 `flutter_flipperkit` 集成到你的项目。
+> 请参考 [flutter_flipperkit_examples](https://github.com/blankapp/flutter_flipperkit_examples) 项目，将 `flutter_flipperkit` 集成到你的项目。
 
 ### 运行程序
 
@@ -147,14 +147,14 @@ $ flutter run
 
 ## 已知问题（需注意）
 
-- 【iOS】如果您在Podfile中使用`use_frameworks！`，请查看该 [issue](https://github.com/facebook/flipper/issues/254)。
+- 【iOS】如果您在Podfile中使用`use_frameworks！`，请查看该 [issue](https://github.com/blankapp/flutter_flipperkit/issues/10#issuecomment-505138362)。
 
 ## 相关链接
 
 - https://github.com/blankapp/flutter_flipperkit_plugins
+- https://github.com/blankapp/flutter_flipperkit_examples
 - https://github.com/blankapp/flutter-debugger
 - https://github.com/blankapp/flutter-debugger-docs
-- https://github.com/blankapp/flutter-debugger-examples
 
 ## 探讨
 

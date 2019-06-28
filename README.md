@@ -137,7 +137,7 @@ void main() {
 
 ```
 
-> Please refer to  [flutter-debugger-examples](https://github.com/blankapp/flutter-debugger-examples) project, to integrate `flutter_flipperkit` into your project.
+> Please refer to  [flutter_flipperkit_examples](flutter_flipperkit_examples) project, to integrate `flutter_flipperkit` into your project.
 
 ### Run the app
 
@@ -147,14 +147,14 @@ $ flutter run
 
 ## Known Issues (to note)
 
-- 【iOS】If you use `use_frameworks!` in your Podfile, Please see the [issue](https://github.com/facebook/flipper/issues/254).
+- 【iOS】If you use `use_frameworks!` in your Podfile, Please see the [issue](https://github.com/blankapp/flutter_flipperkit/issues/10#issuecomment-505138362).
 
 ## Related Links
 
 - https://github.com/blankapp/flutter_flipperkit_plugins
+- https://github.com/blankapp/flutter_flipperkit_examples
 - https://github.com/blankapp/flutter-debugger
 - https://github.com/blankapp/flutter-debugger-docs
-- https://github.com/blankapp/flutter-debugger-examples
 
 ## Discussion
 
