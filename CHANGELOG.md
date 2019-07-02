@@ -1,3 +1,7 @@
+## 0.0.17
+
+* Fixed `Netword` plugin not working when `filter` is null
+
 ## 0.0.16
 
 * Upgrade `flipper` to `0.22.0`
