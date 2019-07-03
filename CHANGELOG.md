@@ -1,3 +1,7 @@
+## 0.0.18
+
+* `Network` plugin supports `flutter` beta 1.7.8
+
 ## 0.0.17
 
 * Fixed `Netword` plugin not working when `filter` is null

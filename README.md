@@ -1,6 +1,6 @@
 # flutter_flipperkit
 
-[![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dartlang.org/packages/flutter_flipperkit)
+[![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dev/packages/flutter_flipperkit)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
 
 English | [简体中文](./README.zh_CN.md)
@@ -49,7 +49,17 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.17
+  flutter_flipperkit: ^0.0.18
+```
+
+If you are using a stable version of Flutter, please add it in the following way:
+
+```yaml
+dependencies:
+  flutter_flipperkit:
+    git:
+      url: https://github.com/blankapp/flutter_flipperkit
+      ref: stable
 ```
 
 Change your project `ios/Podfile` file according to the example:
