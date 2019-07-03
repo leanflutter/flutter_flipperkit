@@ -117,6 +117,8 @@ void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
   flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // 如果你使用 http 库, 你必须把它设置为 false 且使用 https://pub.dev/packages/flipperkit_http_interceptor
+    // useHttpOverrides: false,
     // 可选， 用于过滤请求
     filter: (HttpClientRequest request) {
       String url = '${request.uri}';

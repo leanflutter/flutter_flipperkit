@@ -117,6 +117,8 @@ void main() {
   FlipperClient flipperClient = FlipperClient.getDefault();
 
   flipperClient.addPlugin(new FlipperNetworkPlugin(
+    // If you use http library, you must set it to false and use https://pub.dev/packages/flipperkit_http_interceptor
+    // useHttpOverrides: false,
     // Optional, for filtering request
     filter: (HttpClientRequest request) {
       String url = '${request.uri}';
