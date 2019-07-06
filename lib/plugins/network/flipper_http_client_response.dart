@@ -93,7 +93,7 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
 
     try {
       if (!streamController.isClosed) streamController.close();
-      body = await streamController.stream.transform(Utf8Decoder(allowMalformed: false)).join();
+      body = await Utf8Decoder(allowMalformed: false).bind(streamController.stream).join();
     } catch (e) { }
 
     ResponseInfo responseInfo = new ResponseInfo(
