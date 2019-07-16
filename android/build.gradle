@@ -33,7 +33,7 @@ android {
     }
     dependencies {
         releaseImplementation project(':flipper-no-op')
-        debugImplementation 'com.facebook.flipper:flipper:0.22.0'
+        debugImplementation 'com.facebook.flipper:flipper:0.23.1'
         debugImplementation 'com.facebook.soloader:soloader:0.5.1'
     }
 }

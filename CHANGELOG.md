@@ -1,3 +1,7 @@
+## 0.0.19
+
+* Upgrade `flipper` to `0.23.1`
+
 ## 0.0.18
 
 * `Network` plugin supports `flutter` beta 1.7.8

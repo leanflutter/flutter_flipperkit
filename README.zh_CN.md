@@ -49,7 +49,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.18
+  flutter_flipperkit: ^0.0.19
 ```
 
 如何你在使用稳定版本的 Flutter ，请使用以下方式添加：

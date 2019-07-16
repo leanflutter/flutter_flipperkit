@@ -49,7 +49,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.18
+  flutter_flipperkit: ^0.0.19
 ```
 
 If you are using a stable version of Flutter, please add it in the following way:

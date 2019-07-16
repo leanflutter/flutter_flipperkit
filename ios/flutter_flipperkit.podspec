@@ -1,4 +1,4 @@
-flipperkit_version = '0.22.0'
+flipperkit_version = '0.23.1'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
