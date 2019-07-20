@@ -19,7 +19,7 @@ Table of Contents
   * [Related Links](#related-links)
   * [Discussion](#discussion)
   * [Stargazers over time](#stargazers-over-time)
-  * [License](#license)c
+  * [License](#license)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
