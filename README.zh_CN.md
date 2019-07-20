@@ -16,7 +16,9 @@ Table of Contents
       * [用法](#用法)
       * [运行程序](#运行程序)
   * [已知问题（需注意）](#已知问题需注意)
+  * [相关链接](#相关链接)
   * [探讨](#探讨)
+  * [Stargazers over time](#stargazers-over-time)
   * [许可证](#许可证)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
@@ -34,6 +36,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 ![shared-preferences](https://fbflipper.com/docs/assets/shared-preferences.png)
 
 - Redux inspector
+- Database Browser
 
 ## 快速开始
 
@@ -173,6 +176,10 @@ $ flutter run
 如果您对此项目有任何建议或疑问，可以通过 [Telegram Group](https://t.me/flutterdebugger) 或我的微信进行讨论。
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/blankapp/flutter_flipperkit.svg)](https://starchart.cc/blankapp/flutter_flipperkit)
 
 ## 许可证
 

@@ -16,8 +16,10 @@ Table of Contents
       * [Usage](#usage)
       * [Run the app](#run-the-app)
   * [Known Issues (to note)](#known-issues-to-note)
+  * [Related Links](#related-links)
   * [Discussion](#discussion)
-  * [License](#license)
+  * [Stargazers over time](#stargazers-over-time)
+  * [License](#license)c
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
@@ -34,6 +36,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 ![shared-preferences](https://fbflipper.com/docs/assets/shared-preferences.png)
 
 - Redux inspector
+- Database Browser
 
 ## Quick Start
 
@@ -173,6 +176,10 @@ $ flutter run
 If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flutterdebugger) or my wechat.
 
 ![](http://blankapp.org/assets/images/wechat_qrcode.png)
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/blankapp/flutter_flipperkit.svg)](https://starchart.cc/blankapp/flutter_flipperkit)
 
 ## License
 
