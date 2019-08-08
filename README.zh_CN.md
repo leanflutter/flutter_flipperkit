@@ -55,14 +55,14 @@ dependencies:
   flutter_flipperkit: ^0.0.19
 ```
 
-如何你在使用稳定版本的 Flutter ，请使用以下方式添加：
+如何你在使用旧版本的 Flutter ，请使用以下方式添加：
 
 ```yaml
 dependencies:
   flutter_flipperkit:
     git:
       url: https://github.com/blankapp/flutter_flipperkit
-      ref: stable
+      ref: legacy
 ```
 
 根据示例更改项目的 ios/Podfile 文件：

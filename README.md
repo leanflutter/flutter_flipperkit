@@ -55,14 +55,14 @@ dependencies:
   flutter_flipperkit: ^0.0.19
 ```
 
-If you are using a stable version of Flutter, please add it in the following way:
+If you are using a legacy version of Flutter, please add it in the following way:
 
 ```yaml
 dependencies:
   flutter_flipperkit:
     git:
       url: https://github.com/blankapp/flutter_flipperkit
-      ref: stable
+      ref: legacy
 ```
 
 Change your project `ios/Podfile` file according to the example:
