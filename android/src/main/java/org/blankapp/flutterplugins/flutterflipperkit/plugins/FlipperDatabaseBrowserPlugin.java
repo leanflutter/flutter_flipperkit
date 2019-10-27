@@ -1,5 +1,6 @@
 package org.blankapp.flutterplugins.flutterflipperkit.plugins;
 
+import android.app.Activity;
 import android.util.Log;
 
 import com.facebook.flipper.core.FlipperArray;
@@ -25,6 +26,8 @@ public class FlipperDatabaseBrowserPlugin implements FlipperPlugin {
     private EventChannel.EventSink eventSink;
     private FlipperConnection flipperConnection;
 
+    private Activity context;
+
     @Override
     public String getId() {
         return ID;
@@ -47,7 +50,12 @@ public class FlipperDatabaseBrowserPlugin implements FlipperPlugin {
                     map.put("offset", params.getInt("offset"));
                 }
 
-                eventSink.success(map);
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        eventSink.success(map);
+                    }
+                });
             }
         });
     }
@@ -64,6 +72,10 @@ public class FlipperDatabaseBrowserPlugin implements FlipperPlugin {
 
     public void setEventSink(EventChannel.EventSink eventSink) {
         this.eventSink = eventSink;
+    }
+
+    public void setContext(Activity context) {
+        this.context = context;
     }
 
     public void handleMethodCall(MethodCall call, MethodChannel.Result result) {

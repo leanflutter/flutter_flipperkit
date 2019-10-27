@@ -244,6 +244,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     public void onListen(Object args, EventChannel.EventSink eventSink) {
         this.eventSink = eventSink;
         flipperDatabaseBrowserPlugin.setEventSink(eventSink);
+        flipperDatabaseBrowserPlugin.setContext(activity);
     }
 
     @Override
