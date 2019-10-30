@@ -1,4 +1,4 @@
-package org.blankapp.flutterplugins.flutterflipperkit.plugins;
+package org.blankapp.flutterplugins.flutter_flipperkit.plugins;
 
 import android.app.Activity;
 import android.util.Log;

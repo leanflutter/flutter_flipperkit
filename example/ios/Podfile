@@ -33,8 +33,6 @@ def parse_KV_file(file, separator='=')
 end
 
 target 'Runner' do
-  # use_frameworks!
-
   # Prepare symlinks folder. We use symlinks to avoid having Podfile.lock
   # referring to absolute paths on developers' machines.
   system('rm -rf .symlinks')
@@ -43,7 +41,7 @@ target 'Runner' do
   # Flutter Pods
   generated_xcode_build_settings = parse_KV_file('./Flutter/Generated.xcconfig')
   if generated_xcode_build_settings.empty?
-    puts "Generated.xcconfig must exist. If you're running pod install manually, make sure flutter packages get is executed first."
+    puts "Generated.xcconfig must exist. If you're running pod install manually, make sure flutter pub get is executed first."
   end
   generated_xcode_build_settings.map { |p|
     if p[:name] == 'FLUTTER_FRAMEWORK_DIR'
@@ -60,32 +58,34 @@ target 'Runner' do
     File.symlink(p[:path], symlink)
     pod p[:name], :path => File.join(symlink, 'ios')
   }
-
-  # If you use `use_frameworks!` in your Podfile, 
-  # uncomment the below $static_framework array and also 
-  # the pre_install section.  This will cause Flipper and 
-  # it's dependencies to be static and all other pods to 
-  # be dynamic.
-  # $static_framework = ['FlipperKit', 'Flipper', 'Flipper-Folly',
-  #   'CocoaAsyncSocket', 'ComponentKit', 'DoubleConversion',
-  #   'glog', 'Flipper-PeerTalk', 'Flipper-RSocket', 'Yoga', 'YogaKit',
-  #   'CocoaLibEvent', 'OpenSSL-Static', 'boost-for-react-native']
-
-  # pre_install do |installer|
-  #   Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
-  #   installer.pod_targets.each do |pod|
-  #     if $static_framework.include?(pod.name)
-  #       pod.instance_variable_set(:@host_requires_frameworks, false)
-  #       puts pod
-  #     end
-  #   end
-  # end
 end
+
+# Prevent Cocoapods from embedding a second Flutter framework and causing an error with the new Xcode build system.
+install! 'cocoapods', :disable_input_output_paths => true
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
+    if target.name == 'YogaKit'
+      target.build_configurations.each do |config|
+        config.build_settings['SWIFT_VERSION'] = '4.2'
+      end
+    end
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
   end
+  file_name = Dir.glob("*.xcodeproj")[0]
+  app_project = Xcodeproj::Project.open(file_name)
+  app_project.native_targets.each do |target|
+    target.build_configurations.each do |config|
+      cflags = config.build_settings['OTHER_CFLAGS'] || '$(inherited) '
+      unless cflags.include? '-DFB_SONARKIT_ENABLED=1'
+        puts 'Adding -DFB_SONARKIT_ENABLED=1 in OTHER_CFLAGS...'
+        cflags << '-DFB_SONARKIT_ENABLED=1'
+      end
+      config.build_settings['OTHER_CFLAGS'] = cflags
+    end
+    app_project.save
+  end
+  installer.pods_project.save
 end

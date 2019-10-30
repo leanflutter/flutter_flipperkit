@@ -1,3 +1,7 @@
+## 0.0.20
+
+* Upgrade `flipper` to `0.26.0`
+
 ## 0.0.19
 
 * Upgrade `flipper` to `0.23.1`

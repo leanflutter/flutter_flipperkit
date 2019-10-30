@@ -44,7 +44,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 开始之前确保你已安装：
 
-- 已安装 [Flutter Debugger](https://github.com/blankapp/flutter-debugger) 或 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- 已安装 [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
 
 ### 安装
 
@@ -52,7 +52,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.19
+  flutter_flipperkit: ^0.0.20
 ```
 
 如何你在使用旧版本的 Flutter ，请使用以下方式添加：

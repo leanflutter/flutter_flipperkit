@@ -1,5 +1,5 @@
-group 'org.blankapp.flutterplugins.flutterflipperkit'
-version '1.0-SNAPSHOT'
+group 'org.blankapp.flutterplugins.flutter_flipperkit'
+version '1.0'
 
 buildscript {
     repositories {
@@ -26,14 +26,15 @@ android {
 
     defaultConfig {
         minSdkVersion 16
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
     }
     dependencies {
         releaseImplementation project(':flipper-no-op')
-        debugImplementation 'com.facebook.flipper:flipper:0.23.1'
+        debugImplementation 'com.facebook.flipper:flipper:0.26.0'
+        debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.26.0'
         debugImplementation 'com.facebook.soloader:soloader:0.5.1'
     }
 }

@@ -1,4 +1,4 @@
-package org.blankapp.flutterplugins.flutterflipperkit;
+package org.blankapp.flutterplugins.flutter_flipperkit;
 
 import android.app.Activity;
 
@@ -10,8 +10,8 @@ import com.facebook.flipper.plugins.network.NetworkReporter;
 import com.facebook.flipper.plugins.sharedpreferences.SharedPreferencesFlipperPlugin;
 import com.facebook.soloader.SoLoader;
 
-import org.blankapp.flutterplugins.flutterflipperkit.plugins.FlipperDatabaseBrowserPlugin;
-import org.blankapp.flutterplugins.flutterflipperkit.plugins.FlipperReduxInspectorPlugin;
+import org.blankapp.flutterplugins.flutter_flipperkit.plugins.FlipperDatabaseBrowserPlugin;
+import org.blankapp.flutterplugins.flutter_flipperkit.plugins.FlipperReduxInspectorPlugin;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

@@ -1,4 +1,4 @@
-package org.blankapp.flutterplugins.flutterflipperkit.plugins;
+package org.blankapp.flutterplugins.flutter_flipperkit.plugins;
 
 import com.facebook.flipper.core.FlipperObject;
 import com.facebook.flipper.plugins.common.BufferingFlipperPlugin;

@@ -44,7 +44,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 Before starting make sure you have:
 
-- Installed [Flutter Debugger](https://github.com/blankapp/flutter-debugger) or [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- Installed [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
 
 ### Installation
 
@@ -52,7 +52,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.19
+  flutter_flipperkit: ^0.0.20
 ```
 
 If you are using a legacy version of Flutter, please add it in the following way:
