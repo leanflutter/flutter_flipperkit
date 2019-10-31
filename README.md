@@ -1,7 +1,12 @@
 # flutter_flipperkit
 
-[![pub package](https://img.shields.io/pub/v/flutter_flipperkit.svg)](https://pub.dev/packages/flutter_flipperkit)
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=lijy91%40live.com&currency_code=USD&source=url)
+[![pub version][pub-image]][pub-url]
+[![Join the chat][telegram-image]][telegram-url]
+
+[pub-image]: https://img.shields.io/pub/v/flutter_flipperkit.svg
+[pub-url]: https://pub.dev/packages/flutter_flipperkit
+[telegram-image]:https://img.shields.io/badge/chat-on%20telegram-blue.svg
+[telegram-url]: https://t.me/flipper4flutter
 
 English | [简体中文](./README.zh_CN.md)
 
@@ -168,14 +173,10 @@ $ flutter run
 
 - https://github.com/blankapp/flutter_flipperkit_plugins
 - https://github.com/blankapp/flutter_flipperkit_examples
-- https://github.com/blankapp/flutter-debugger
-- https://github.com/blankapp/flutter-debugger-docs
 
 ## Discussion
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) or my wechat.
-
-![](http://blankapp.org/assets/images/wechat_qrcode.png)
+If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) with me.
 
 ## Stargazers over time
 
@@ -183,7 +184,7 @@ If you have any suggestions or questions about this project, you can discuss it 
 
 ## License
 
-```
+```text
 MIT License
 
 Copyright (c) 2019 JianyingLi <lijy91@foxmail.com>
