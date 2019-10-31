@@ -32,6 +32,8 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 *Flipper (Extensible mobile app debugger) for flutter.*
 
+[View document](./docs/en/README.md)
+
 ### Features
 
 - Network inspector

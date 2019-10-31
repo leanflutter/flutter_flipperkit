@@ -5,7 +5,7 @@
 - [Getting started](./guide/getting-started.md)
 - [Frequently Asked Questions](./guide/faq.md)
 
-## 插件
+## Plugins
 
 - [Database](./plugins/dbbrowser.md)
 - [Network](./plugins/network.md)
