@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install the app, you can download a prebuilt binary from the [release page](https://github.com/blankapp/flutter-debugger/releases).
+To install the [Flipper Desktop](https://fbflipper.com/), you can download a prebuilt binary from the [flipper homepage](https://fbflipper.com/).
 
 ## Integrations
 

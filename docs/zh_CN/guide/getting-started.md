@@ -2,7 +2,7 @@
 
 ## 安装
 
-要安装该应用，您可以从[发布页面](https://github.com/blankapp/flutter-debugger/releases)下载预构建的二进制文件。
+要安装[Flipper Desktop](https://fbflipper.com/) ，您可以从[Flipper 官网](https://fbflipper.com/)下载预构建的二进制文件。
 
 ## 集成
 
