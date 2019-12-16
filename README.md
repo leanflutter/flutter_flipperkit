@@ -59,7 +59,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.20
+  flutter_flipperkit: ^0.0.21
 ```
 
 If you are using a legacy version of Flutter, please add it in the following way:
@@ -189,7 +189,7 @@ If you have any suggestions or questions about this project, you can discuss it 
 ```text
 MIT License
 
-Copyright (c) 2019 JianyingLi <lijy91@foxmail.com>
+Copyright (c) 2019 LiJianying <lijy91@foxmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

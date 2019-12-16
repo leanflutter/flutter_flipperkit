@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       body: new Map()
         ..putIfAbsent("username", () => "lijy91")
         ..putIfAbsent("age", () => 28)
-        ..putIfAbsent("name", () => "JianyingLi"),
+        ..putIfAbsent("name", () => "LiJianying"),
     );
 
     flipperNetworkPlugin.reportResponse(responseInfo);
@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                     ..putIfAbsent("username", () => "lijy91@foxmail.com")
                     ..putIfAbsent("password", () => "123456"),
                   nextState: new Map()
-                    ..putIfAbsent("user", () => { "name": "JianyingLi"})
+                    ..putIfAbsent("user", () => { "name": "LiJianying"})
                 );
                 flipperReduxInspectorPlugin.report(actionInfo);
               },

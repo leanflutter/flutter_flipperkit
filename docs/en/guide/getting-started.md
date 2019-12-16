@@ -12,7 +12,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.20
+  flutter_flipperkit: ^0.0.21
 ```
 
 If you are using a legacy version of Flutter, please add it in the following way:

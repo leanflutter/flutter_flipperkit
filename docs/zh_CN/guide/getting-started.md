@@ -13,7 +13,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.20
+  flutter_flipperkit: ^0.0.21
 ```
 
 如何你在使用旧版本的 Flutter ，请使用以下方式添加：

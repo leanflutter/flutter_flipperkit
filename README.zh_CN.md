@@ -59,7 +59,7 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.20
+  flutter_flipperkit: ^0.0.21
 ```
 
 如何你在使用旧版本的 Flutter ，请使用以下方式添加：
@@ -189,7 +189,7 @@ $ flutter run
 ```text
 MIT License
 
-Copyright (c) 2019 JianyingLi <lijy91@foxmail.com>
+Copyright (c) 2019 LiJianying <lijy91@foxmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

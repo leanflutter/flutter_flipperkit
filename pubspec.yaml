@@ -1,7 +1,7 @@
 name: flutter_flipperkit
 description: Flipper (Extensible mobile app debugger) for flutter.
-version: 0.0.20
-author: JianyingLi <lijy91@foxmail.com>
+version: 0.0.21
+author: LiJianying <lijy91@foxmail.com>
 homepage: https://github.com/blankapp/flutter_flipperkit
 
 environment:

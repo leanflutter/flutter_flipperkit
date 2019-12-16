@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
                        DESC
   s.homepage         = 'https://github.com/lijy91/flutter_flipperkit'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'JianyingLi' => 'lijy91@foxmail.com' }
+  s.author           = { 'LiJianying' => 'lijy91@foxmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
