@@ -1,6 +1,7 @@
 package org.blankapp.flutterplugins.flutter_flipperkit;
 
 import android.app.Activity;
+import android.content.Context;
 
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -34,7 +35,7 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.StreamHandler {
     private EventChannel.EventSink eventSink;
 
-    private Activity activity;
+    private Context context;
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
@@ -42,13 +43,13 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     private FlipperDatabaseBrowserPlugin flipperDatabaseBrowserPlugin;
     private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
 
-    public FlutterFlipperkitPlugin(Activity activity) {
-        this.activity = activity;
-        SoLoader.init(activity.getApplication(), false);
-        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(activity)) {
-            flipperClient = AndroidFlipperClient.getInstance(activity);
+    public FlutterFlipperkitPlugin(Context context) {
+        this.context = context;
+        SoLoader.init(context.getApplicationContext(), false);
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(context)) {
+            flipperClient = AndroidFlipperClient.getInstance(context);
             networkFlipperPlugin = new NetworkFlipperPlugin();
-            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(activity, "FlutterSharedPreferences");
+            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(context, "FlutterSharedPreferences");
 
             flipperDatabaseBrowserPlugin = new FlipperDatabaseBrowserPlugin();
             flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
@@ -59,7 +60,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
      * Plugin registration.
      */
     public static void registerWith(Registrar registrar) {
-        final FlutterFlipperkitPlugin flipperkitPlugin = new FlutterFlipperkitPlugin(registrar.activity());
+        final FlutterFlipperkitPlugin flipperkitPlugin = new FlutterFlipperkitPlugin(registrar.activeContext());
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_flipperkit");
         channel.setMethodCallHandler(flipperkitPlugin);
 
@@ -69,7 +70,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
-        if (!FlipperUtils.shouldEnableFlipper(activity)) {
+        if (!FlipperUtils.shouldEnableFlipper(context)) {
             result.success(true);
             return;
         }
@@ -244,7 +245,6 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     public void onListen(Object args, EventChannel.EventSink eventSink) {
         this.eventSink = eventSink;
         flipperDatabaseBrowserPlugin.setEventSink(eventSink);
-        flipperDatabaseBrowserPlugin.setContext(activity);
     }
 
     @Override
