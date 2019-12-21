@@ -10,23 +10,24 @@
 
 English | [简体中文](./README.zh_CN.md)
 
-Table of Contents
-=================
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-  * [Introduction](#introduction)
-      * [Features](#features)
-  * [Quick Start](#quick-start)
-      * [Prerequisites](#prerequisites)
-      * [Installation](#installation)
-      * [Usage](#usage)
-      * [Run the app](#run-the-app)
-  * [Known Issues (to note)](#known-issues-to-note)
-  * [Related Links](#related-links)
-  * [Discussion](#discussion)
-  * [Stargazers over time](#stargazers-over-time)
-  * [License](#license)
+- [Introduction](#introduction)
+  - [Features](#features)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Run the app](#run-the-app)
+- [Known Issues (to note)](#known-issues-to-note)
+- [Related Links](#related-links)
+- [Discussion](#discussion)
+- [Stargazers over time](#stargazers-over-time)
+- [License](#license)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Introduction
 

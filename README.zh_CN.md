@@ -10,23 +10,24 @@
 
 [English](./README.md) | 简体中文
 
-Table of Contents
-=================
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-  * [简介](#简介)
-      * [特性](#特性)
-  * [快速开始](#快速开始)
-      * [必备条件](#必备条件)
-      * [安装](#安装)
-      * [用法](#用法)
-      * [运行程序](#运行程序)
-  * [已知问题（需注意）](#已知问题需注意)
-  * [相关链接](#相关链接)
-  * [探讨](#探讨)
-  * [Stargazers over time](#stargazers-over-time)
-  * [许可证](#许可证)
+- [简介](#%E7%AE%80%E4%BB%8B)
+  - [特性](#%E7%89%B9%E6%80%A7)
+- [快速开始](#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B)
+  - [必备条件](#%E5%BF%85%E5%A4%87%E6%9D%A1%E4%BB%B6)
+  - [安装](#%E5%AE%89%E8%A3%85)
+  - [用法](#%E7%94%A8%E6%B3%95)
+  - [运行程序](#%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F)
+- [已知问题（需注意）](#%E5%B7%B2%E7%9F%A5%E9%97%AE%E9%A2%98%E9%9C%80%E6%B3%A8%E6%84%8F)
+- [相关链接](#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5)
+- [探讨](#%E6%8E%A2%E8%AE%A8)
+- [Stargazers over time](#stargazers-over-time)
+- [许可证](#%E8%AE%B8%E5%8F%AF%E8%AF%81)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 简介
 
