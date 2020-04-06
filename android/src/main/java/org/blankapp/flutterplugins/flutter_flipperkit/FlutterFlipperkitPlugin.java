@@ -1,7 +1,8 @@
 package org.blankapp.flutterplugins.flutter_flipperkit;
 
-import android.app.Activity;
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 
 import com.facebook.flipper.android.AndroidFlipperClient;
 import com.facebook.flipper.android.utils.FlipperUtils;
@@ -22,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.EventChannel;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -32,10 +35,16 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * FlutterFlipperkitPlugin
  */
-public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.StreamHandler {
-    private EventChannel.EventSink eventSink;
+public class FlutterFlipperkitPlugin implements FlutterPlugin, MethodCallHandler, EventChannel.StreamHandler {
+    private static final String CHANNEL_NAME = "flutter_flipperkit";
+    private static final String EVENT_CHANNEL_NAME = "flutter_flipperkit/event_channel";
 
     private Context context;
+    private MethodChannel channel;
+    private EventChannel eventChannel;
+
+    private EventChannel.EventSink eventSink;
+
     private FlipperClient flipperClient;
     private NetworkFlipperPlugin networkFlipperPlugin;
     private SharedPreferencesFlipperPlugin sharedPreferencesFlipperPlugin;
@@ -43,33 +52,27 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     private FlipperDatabaseBrowserPlugin flipperDatabaseBrowserPlugin;
     private FlipperReduxInspectorPlugin flipperReduxInspectorPlugin;
 
-    public FlutterFlipperkitPlugin(Context context) {
-        this.context = context;
-        SoLoader.init(context.getApplicationContext(), false);
-        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(context)) {
-            flipperClient = AndroidFlipperClient.getInstance(context);
-            networkFlipperPlugin = new NetworkFlipperPlugin();
-            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(context, "FlutterSharedPreferences");
-
-            flipperDatabaseBrowserPlugin = new FlipperDatabaseBrowserPlugin();
-            flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
-        }
+    @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
+        this.setupChannel(flutterPluginBinding.getBinaryMessenger(), flutterPluginBinding.getApplicationContext());
     }
 
-    /**
-     * Plugin registration.
-     */
+    // This static function is optional and equivalent to onAttachedToEngine. It supports the old
+    // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
+    // plugin registration via this function while apps migrate to use the new Android APIs
+    // post-flutter-1.12 via https://flutter.dev/go/android-project-migration.
+    //
+    // It is encouraged to share logic between onAttachedToEngine and registerWith to keep
+    // them functionally equivalent. Only one of onAttachedToEngine or registerWith will be called
+    // depending on the user's project. onAttachedToEngine or registerWith must both be defined
+    // in the same class.
     public static void registerWith(Registrar registrar) {
-        final FlutterFlipperkitPlugin flipperkitPlugin = new FlutterFlipperkitPlugin(registrar.activeContext());
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "flutter_flipperkit");
-        channel.setMethodCallHandler(flipperkitPlugin);
-
-        final EventChannel eventChannel = new EventChannel(registrar.messenger(), "flutter_flipperkit/event_channel");
-        eventChannel.setStreamHandler(flipperkitPlugin);
+        final FlutterFlipperkitPlugin plugin = new FlutterFlipperkitPlugin();
+        plugin.setupChannel(registrar.messenger(), registrar.activeContext());
     }
 
     @Override
-    public void onMethodCall(MethodCall call, Result result) {
+    public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if (!FlipperUtils.shouldEnableFlipper(context)) {
             result.success(true);
             return;
@@ -200,15 +203,17 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
 
                 if (argBody instanceof HashMap) {
                     bodyString = new JSONObject((HashMap) argBody).toString();
-                } else if (argBody instanceof  ArrayList) {
+                } else if (argBody instanceof ArrayList) {
                     bodyString = new JSONArray((ArrayList) argBody).toString();
                 }
-            } catch (ClassCastException e) { }
+            } catch (ClassCastException e) {
+            }
 
             if (bodyString == null) {
                 try {
                     bodyString = call.argument("body");
-                } catch (NullPointerException e) { }
+                } catch (NullPointerException e) {
+                }
             }
         }
 
@@ -217,7 +222,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
 
     private List<NetworkReporter.Header> convertHeader(MethodCall call) {
         Map<String, Object> argHeaders = call.argument("headers");
-        List<NetworkReporter.Header> list = new ArrayList<>();;
+        List<NetworkReporter.Header> list = new ArrayList<>();
 
         if (argHeaders != null) {
             Set<String> keys = argHeaders.keySet();
@@ -228,7 +233,7 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
                 if (value instanceof ArrayList) {
                     List values = (ArrayList) value;
                     StringBuilder builder = new StringBuilder();
-                    for(Object obj : values) {
+                    for (Object obj : values) {
                         builder.append(obj);
                     }
                     valueString = builder.toString();
@@ -244,11 +249,42 @@ public class FlutterFlipperkitPlugin implements MethodCallHandler, EventChannel.
     @Override
     public void onListen(Object args, EventChannel.EventSink eventSink) {
         this.eventSink = eventSink;
-        flipperDatabaseBrowserPlugin.setEventSink(eventSink);
+        flipperDatabaseBrowserPlugin.setEventSink(this.eventSink);
     }
 
     @Override
     public void onCancel(Object args) {
         this.eventSink = null;
+    }
+
+    @Override
+    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+        this.teardownChannel();
+    }
+
+    private void setupChannel(BinaryMessenger messenger, Context context) {
+        this.context = context;
+        SoLoader.init(context.getApplicationContext(), false);
+        if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(context)) {
+            flipperClient = AndroidFlipperClient.getInstance(context);
+            networkFlipperPlugin = new NetworkFlipperPlugin();
+            sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(context, "FlutterSharedPreferences");
+
+            flipperDatabaseBrowserPlugin = new FlipperDatabaseBrowserPlugin();
+            flipperReduxInspectorPlugin = new FlipperReduxInspectorPlugin();
+        }
+
+        this.channel = new MethodChannel(messenger, CHANNEL_NAME);
+        this.channel.setMethodCallHandler(this);
+
+        this.eventChannel = new EventChannel(messenger, EVENT_CHANNEL_NAME);
+        this.eventChannel.setStreamHandler(this);
+    }
+
+    private void teardownChannel() {
+        this.channel.setMethodCallHandler(null);
+        this.channel = null;
+        this.eventChannel.setStreamHandler(null);
+        this.eventChannel = null;
     }
 }

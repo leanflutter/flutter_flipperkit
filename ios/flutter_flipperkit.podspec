@@ -1,11 +1,11 @@
-flipperkit_version = '0.26.0'
+flipperkit_version = '0.36.0'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.6'
+  s.version          = '0.0.22'
   s.summary          = 'Flipper (Extensible mobile app debugger) for flutter.'
   s.description      = <<-DESC
   Flipper (Extensible mobile app debugger) for flutter.
@@ -25,5 +25,4 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
   s.ios.deployment_target = '9.0'
-  s.static_framework = true
 end

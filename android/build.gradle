@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.5.0'
     }
 }
 
@@ -33,8 +33,8 @@ android {
     }
     dependencies {
         releaseImplementation project(':flipper-no-op')
-        debugImplementation 'com.facebook.flipper:flipper:0.26.0'
-        debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.26.0'
-        debugImplementation 'com.facebook.soloader:soloader:0.5.1'
+        debugImplementation 'com.facebook.flipper:flipper:0.36.0'
+        debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.36.0'
+        debugImplementation 'com.facebook.soloader:soloader:0.8.2'
     }
 }
