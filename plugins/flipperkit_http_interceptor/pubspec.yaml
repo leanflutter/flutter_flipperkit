@@ -1,0 +1,20 @@
+name: flipperkit_http_interceptor
+description: flipperkit_http_interceptor
+version: 0.0.1
+author: JianyingLi <lijy91@foxmail.com>
+homepage: https://github.com/blankapp/flutter_flipperkit_plugins
+
+environment:
+  sdk: ">=2.0.0-dev.28.0 <3.0.0"
+  flutter: ">=0.1.4 <2.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_flipperkit: ^0.0.17
+  http: any
+  uuid: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
