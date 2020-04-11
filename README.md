@@ -24,7 +24,6 @@ English | [简体中文](./README.zh_CN.md)
 - [Known Issues (to note)](#known-issues-to-note)
 - [Related Links](#related-links)
 - [Discussion](#discussion)
-- [Stargazers over time](#stargazers-over-time)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -180,10 +179,6 @@ $ flutter run
 ## Discussion
 
 If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) with me.
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/blankapp/flutter_flipperkit.svg)](https://starchart.cc/blankapp/flutter_flipperkit)
 
 ## License
 

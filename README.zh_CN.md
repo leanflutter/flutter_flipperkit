@@ -24,7 +24,6 @@
 - [已知问题（需注意）](#%E5%B7%B2%E7%9F%A5%E9%97%AE%E9%A2%98%E9%9C%80%E6%B3%A8%E6%84%8F)
 - [相关链接](#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5)
 - [探讨](#%E6%8E%A2%E8%AE%A8)
-- [Stargazers over time](#stargazers-over-time)
 - [许可证](#%E8%AE%B8%E5%8F%AF%E8%AF%81)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -180,10 +179,6 @@ $ flutter run
 ## 探讨
 
 欢迎加入「Flipper for Flutter」的 [Telegram Group](https://t.me/flipper4flutter) 与我分享你的建议和想法。
-
-## Stargazers over time
-
-[![Stargazers over time](https://starchart.cc/blankapp/flutter_flipperkit.svg)](https://starchart.cc/blankapp/flutter_flipperkit)
 
 ## 许可证
 
