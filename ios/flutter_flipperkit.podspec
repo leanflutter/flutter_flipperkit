@@ -1,4 +1,4 @@
-flipperkit_version = '0.36.0'
+flipperkit_version = '0.37.0'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
@@ -25,4 +25,5 @@ Pod::Spec.new do |s|
 
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
   s.ios.deployment_target = '9.0'
+  s.static_framework = true
 end
