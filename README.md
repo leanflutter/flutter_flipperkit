@@ -277,7 +277,7 @@ void main() {
 
 ```
 
-> Please refer to [examples](./examples), to integrate `flutter_flipperkit` into your project.
+> Please refer to [examples](https://github.com/blankapp/flutter_flipperkit_examples), to integrate `flutter_flipperkit` into your project.
 
 You can install packages from the command line:
 
@@ -300,7 +300,7 @@ $ flutter run
 
 ## Discussion
 
-If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/flipper4flutter) with me.
+If you have any suggestions or questions about this project, you can discuss it by [Telegram Group](https://t.me/joinchat/I4jz1FE5sBGk7V0jUpzSXg) with me.
 
 ## License
 
