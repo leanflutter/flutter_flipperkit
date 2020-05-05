@@ -43,7 +43,7 @@
 
 Before starting make sure you have:
 
-- Installed [Flipper Desktop](https://fbflipper.com/docs/getting-started.html)
+- Installed [Flipper Desktop](https://fbflipper.com/)
 
 ### Installation
 
