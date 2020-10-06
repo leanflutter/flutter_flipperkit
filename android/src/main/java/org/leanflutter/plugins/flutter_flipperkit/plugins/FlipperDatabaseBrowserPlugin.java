@@ -1,4 +1,4 @@
-package org.blankapp.flutterplugins.flutter_flipperkit.plugins;
+package org.leanflutter.plugins.flutter_flipperkit.plugins;
 
 import android.app.Activity;
 import android.content.Context;

@@ -25,7 +25,7 @@ void main() {
 
 ### 开启检查
 
-对于 [redux](https://github.com/brianegan/flutter_redux/)，我们为你准备了 [flipperkit_redux_middleware](https://github.com/blankapp/flutter_flipperkit_plugins/blob/master/packages/flipperkit_redux_middleware) 中间件：
+对于 [redux](https://github.com/brianegan/flutter_redux/)，我们为你准备了 [flipperkit_redux_middleware](https://github.com/leanflutter/flutter_flipperkit_plugins/blob/master/packages/flipperkit_redux_middleware) 中间件：
 
 ```dart
 import 'package:redux/redux.dart';
@@ -50,7 +50,7 @@ void main() async {
 }
 ```
 
-对于 [fish-redux](https://github.com/alibaba/fish-redux)，我们为你准备了 [flipperkit_fish_redux_middleware](https://github.com/blankapp/flutter_flipperkit_plugins/blob/master/packages/flipperkit_fish_redux_middleware) 中间件：
+对于 [fish-redux](https://github.com/alibaba/fish-redux)，我们为你准备了 [flipperkit_fish_redux_middleware](https://github.com/leanflutter/flutter_flipperkit_plugins/blob/master/packages/flipperkit_fish_redux_middleware) 中间件：
 
 ```dart
 import 'package:fish_redux/fish_redux.dart';

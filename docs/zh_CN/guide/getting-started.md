@@ -6,7 +6,7 @@
 
 ## 集成
 
-> 这是官方维护的一些流行库的支持插件，请查看 [https://github.com/blankapp/flutter_flipperkit_plugins](https://github.com/blankapp/flutter_flipperkit_plugins)。
+> 这是官方维护的一些流行库的支持插件，请查看 [https://github.com/leanflutter/flutter_flipperkit_plugins](https://github.com/leanflutter/flutter_flipperkit_plugins)。
 
 
 添加以下内容到包的 pubspec.yaml 文件中：
@@ -22,7 +22,7 @@ dependencies:
 dependencies:
   flutter_flipperkit:
     git:
-      url: https://github.com/blankapp/flutter_flipperkit
+      url: https://github.com/leanflutter/flutter_flipperkit
       ref: legacy
 ```
 
@@ -113,7 +113,7 @@ void main() {
 
 ```
 
-> 请参考 [flutter_flipperkit_examples](https://github.com/blankapp/flutter_flipperkit_examples) 项目，将 `flutter_flipperkit` 集成到你的项目。
+> 请参考 [flutter_flipperkit_examples](https://github.com/leanflutter/flutter_flipperkit_examples) 项目，将 `flutter_flipperkit` 集成到你的项目。
 
 ### 运行程序
 
@@ -123,4 +123,4 @@ $ flutter run
 
 ## 已知问题（需注意）
 
-- 【iOS】如果您在Podfile中使用`use_frameworks！`，请查看该 [issue](https://github.com/blankapp/flutter_flipperkit/issues/10#issuecomment-505138362)。
+- 【iOS】如果您在Podfile中使用`use_frameworks！`，请查看该 [issue](https://github.com/leanflutter/flutter_flipperkit/issues/10#issuecomment-505138362)。

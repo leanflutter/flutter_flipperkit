@@ -25,7 +25,7 @@ void main() {
 
 ### Enable Inspection
 
-for [redux](https://github.com/brianegan/flutter_redux/), you can use [flipperkit_redux_middleware](https://github.com/blankapp/flutter_flipperkit_plugins/blob/master/packages/flipperkit_redux_middleware) middleware:
+for [redux](https://github.com/brianegan/flutter_redux/), you can use [flipperkit_redux_middleware](https://github.com/leanflutter/flutter_flipperkit_plugins/blob/master/packages/flipperkit_redux_middleware) middleware:
 
 ```dart
 import 'package:redux/redux.dart';
@@ -50,7 +50,7 @@ void main() async {
 }
 ```
 
-for [fish-redux](https://github.com/alibaba/fish-redux), you can use [flipperkit_fish_redux_middleware](https://github.com/blankapp/flutter_flipperkit_plugins/blob/master/packages/flipperkit_fish_redux_middleware) middleware:
+for [fish-redux](https://github.com/alibaba/fish-redux), you can use [flipperkit_fish_redux_middleware](https://github.com/leanflutter/flutter_flipperkit_plugins/blob/master/packages/flipperkit_fish_redux_middleware) middleware:
 
 ```dart
 import 'package:fish_redux/fish_redux.dart';

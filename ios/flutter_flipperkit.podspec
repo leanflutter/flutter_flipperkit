@@ -1,11 +1,11 @@
-flipperkit_version = '0.37.0'
+flipperkit_version = '0.60.0'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.23'
+  s.version          = '0.0.24'
   s.summary          = 'Flipper (Extensible mobile app debugger) for flutter.'
   s.description      = <<-DESC
   Flipper (Extensible mobile app debugger) for flutter.

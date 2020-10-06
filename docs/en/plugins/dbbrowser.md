@@ -26,7 +26,7 @@ void main() {
 
 ### Enable Inspection
 
-for [sqfite](https://github.com/tekartik/sqflite), you can use [flipperkit_sqflite_driver](https://github.com/blankapp/flutter_flipperkit_plugins/tree/master/packages/flipperkit_sqflite_driver) driver:
+for [sqfite](https://github.com/tekartik/sqflite), you can use [flipperkit_sqflite_driver](https://github.com/leanflutter/flutter_flipperkit_plugins/tree/master/packages/flipperkit_sqflite_driver) driver:
 
 ```dart
 var sqfliteDriver = SqfliteDriver('simple_todo.db');
@@ -36,4 +36,4 @@ flipperClient.addPlugin(new FlipperDatabaseBrowserPlugin(sqfliteDriver));
 ## Related Links
 
 - https://github.com/tekartik/sqflite
-- https://github.com/blankapp/flipper-plugin-dbbrowser
+- https://github.com/leanflutter/flipper-plugin-dbbrowser

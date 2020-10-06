@@ -78,7 +78,8 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
   @override
   Future<HttpClientResponse> close() async {
-    bool skipped = _flipperNetworkPlugin.filter != null && !_flipperNetworkPlugin.filter(request);
+    bool skipped = _flipperNetworkPlugin.filter != null &&
+        !_flipperNetworkPlugin.filter(request);
 
     if (!skipped) {
       await this._reportRequest(uniqueId, request);
@@ -131,18 +132,24 @@ class FlipperHttpClientRequest implements HttpClientRequest {
     request.writeln(obj);
   }
 
-  Future<FlipperHttpClientResponse> withInterceptor(HttpClientResponse response) async {
-    FlipperHttpClientResponse responseWithInterceptor = 
-      new FlipperHttpClientResponse(this.uniqueId, response);
+  Future<FlipperHttpClientResponse> withInterceptor(
+    HttpClientResponse response,
+  ) async {
+    FlipperHttpClientResponse responseWithInterceptor =
+        new FlipperHttpClientResponse(this.uniqueId, response);
 
     return responseWithInterceptor;
   }
 
-  Future<bool> _reportRequest(String uniqueId, HttpClientRequest request) async {
+  Future<bool> _reportRequest(
+    String uniqueId,
+    HttpClientRequest request,
+  ) async {
     Map<String, dynamic> headers = new Map();
     request.headers.forEach((String name, List<String> values) {
       if (values != null && values.length > 0) {
-        headers.putIfAbsent(name, () => values.length == 1 ? values[0] : values);
+        headers.putIfAbsent(
+            name, () => values.length == 1 ? values[0] : values);
       }
     });
 
@@ -150,8 +157,10 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
     try {
       if (!streamController.isClosed) streamController.close();
-      body = await Utf8Decoder(allowMalformed: false).bind(streamController.stream).join();
-    } catch (e) { }
+      body = await Utf8Decoder(allowMalformed: false)
+          .bind(streamController.stream)
+          .join();
+    } catch (e) {}
 
     RequestInfo requestInfo = new RequestInfo(
       requestId: uniqueId,
@@ -164,5 +173,10 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
     _flipperNetworkPlugin?.reportRequest(requestInfo);
     return true;
+  }
+
+  @override
+  void abort([Object exception, StackTrace stackTrace]) {
+    request.abort([exception, stackTrace]);
   }
 }

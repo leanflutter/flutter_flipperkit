@@ -2,8 +2,7 @@
 //  Runner-Nope.swift
 //  Runner
 //
-//  Created by Lijy91 on 2019/10/30.
-//  Copyright © 2019 The Chromium Authors. All rights reserved.
+//  Created by Lijy91 on 2020/10/6.
 //
 
 import Foundation

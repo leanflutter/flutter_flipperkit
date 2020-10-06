@@ -34,7 +34,7 @@ void main() {
   flipperClient.start();
 ```
 
-对于 [dio](https://github.com/flutterchina/dio) 2.x，我们为你准备了 [flipperkit_dio_interceptor](https://github.com/blankapp/flutter_flipperkit_plugins/tree/master/packages/flipperkit_dio_interceptor) 拦截器：
+对于 [dio](https://github.com/flutterchina/dio) 2.x，我们为你准备了 [flipperkit_dio_interceptor](https://github.com/leanflutter/flutter_flipperkit_plugins/tree/master/packages/flipperkit_dio_interceptor) 拦截器：
 
 ```dart
 final dio = new Dio(options);

@@ -6,7 +6,7 @@ To install the [Flipper Desktop](https://fbflipper.com/), you can download a pre
 
 ## Integrations
 
-> more plugins, please see [https://github.com/blankapp/flutter_flipperkit_plugins](https://github.com/blankapp/flutter_flipperkit_plugins)。
+> more plugins, please see [https://github.com/leanflutter/flutter_flipperkit_plugins](https://github.com/leanflutter/flutter_flipperkit_plugins)。
 
 Add this to your package's pubspec.yaml file:
 
@@ -21,7 +21,7 @@ If you are using a legacy version of Flutter, please add it in the following way
 dependencies:
   flutter_flipperkit:
     git:
-      url: https://github.com/blankapp/flutter_flipperkit
+      url: https://github.com/leanflutter/flutter_flipperkit
       ref: legacy
 ```
 
@@ -122,4 +122,4 @@ $ flutter run
 
 ## Known Issues (to note)
 
-- 【iOS】If you use `use_frameworks!` in your Podfile, Please see the [issue](https://github.com/blankapp/flutter_flipperkit/issues/10#issuecomment-505138362).
+- 【iOS】If you use `use_frameworks!` in your Podfile, Please see the [issue](https://github.com/leanflutter/flutter_flipperkit/issues/10#issuecomment-505138362).

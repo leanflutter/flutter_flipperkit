@@ -34,7 +34,7 @@ void main() {
   flipperClient.start();
 ```
 
-for [dio](https://github.com/flutterchina/dio) 2.x, you can use [flipperkit_dio_interceptor](https://github.com/blankapp/flutter_flipperkit_plugins/tree/master/packages/flipperkit_dio_interceptor) interceptor:
+for [dio](https://github.com/flutterchina/dio) 2.x, you can use [flipperkit_dio_interceptor](https://github.com/leanflutter/flutter_flipperkit_plugins/tree/master/packages/flipperkit_dio_interceptor) interceptor:
 
 ```dart
 final dio = new Dio(options);

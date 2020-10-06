@@ -26,7 +26,7 @@ void main() {
 
 ### 开启检查
 
-对于 [sqfite](https://github.com/tekartik/sqflite)，我们为你准备了 [flipperkit_sqflite_driver](https://github.com/blankapp/flutter_flipperkit_plugins/tree/master/packages/flipperkit_sqflite_driver) 驱动：
+对于 [sqfite](https://github.com/tekartik/sqflite)，我们为你准备了 [flipperkit_sqflite_driver](https://github.com/leanflutter/flutter_flipperkit_plugins/tree/master/packages/flipperkit_sqflite_driver) 驱动：
 
 ```dart
 var sqfliteDriver = SqfliteDriver('simple_todo.db');
@@ -36,4 +36,4 @@ flipperClient.addPlugin(new FlipperDatabaseBrowserPlugin(sqfliteDriver));
 ## 相关链接
 
 - https://github.com/tekartik/sqflite
-- https://github.com/blankapp/flipper-plugin-dbbrowser
+- https://github.com/leanflutter/flipper-plugin-dbbrowser

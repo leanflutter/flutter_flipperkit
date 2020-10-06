@@ -1,4 +1,4 @@
-group 'org.blankapp.flutterplugins.flutter_flipperkit'
+group 'org.leanflutter.plugins.flutter_flipperkit'
 version '1.0'
 
 buildscript {
@@ -22,19 +22,18 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 16
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     lintOptions {
         disable 'InvalidPackage'
     }
     dependencies {
         releaseImplementation project(':flipper-no-op')
-        debugImplementation 'com.facebook.flipper:flipper:0.37.0'
-        debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.37.0'
-        debugImplementation 'com.facebook.soloader:soloader:0.8.2'
+        debugImplementation 'com.facebook.flipper:flipper:0.60.0'
+        debugImplementation 'com.facebook.flipper:flipper-network-plugin:0.60.0'
+        debugImplementation 'com.facebook.soloader:soloader:0.9.0'
     }
 }
