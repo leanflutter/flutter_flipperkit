@@ -50,7 +50,7 @@
         [self clientAddPlugin:call result:result];
     } else if ([@"clientStart" isEqualToString:call.method]) {
         [self clientStart:call result:result];
-    } else if ([@"clientStart" isEqualToString:call.method]) {
+    } else if ([@"clientStop" isEqualToString:call.method]) {
         [self clientStop:call result:result];
     } else if ([@"pluginNetworkReportRequest" isEqualToString:call.method]) {
         [self pluginNetworkReportRequest:call result:result];
