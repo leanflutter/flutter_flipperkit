@@ -94,9 +94,9 @@
         [flipperClient addPlugin:flipperKitNetworkPlugin];
     } else if ([pluginId isEqualToString:@"Preferences"]) {
         [flipperClient addPlugin:fKUserDefaultsPlugin];
-    } else if ([pluginId isEqualToString:@"DatabaseBrowser"]) {
+    } else if ([pluginId isEqualToString:@"flipper-plugin-dbbrowser"]) {
         [flipperClient addPlugin:flipperDatabaseBrowserPlugin];
-    } else if ([pluginId isEqualToString:@"ReduxInspector"]) {
+    } else if ([pluginId isEqualToString:@"flipper-plugin-reduxinspector"]) {
         [flipperClient addPlugin:flipperReduxInspectorPlugin];
     }
     result([NSNumber numberWithBool:YES]);

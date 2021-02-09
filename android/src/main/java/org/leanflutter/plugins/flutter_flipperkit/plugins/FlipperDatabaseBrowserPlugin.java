@@ -26,7 +26,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
 public class FlipperDatabaseBrowserPlugin implements FlipperPlugin {
-    public static final String ID = "DatabaseBrowser";
+    public static final String ID = "flipper-plugin-dbbrowser";
 
     private EventChannel.EventSink eventSink;
     private FlipperConnection flipperConnection;

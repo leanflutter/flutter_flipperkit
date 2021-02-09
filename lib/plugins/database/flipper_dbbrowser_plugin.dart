@@ -25,7 +25,7 @@ class FlipperDatabaseBrowserPlugin extends FlipperPlugin{
 
   @override
   String getId() {
-    return "DatabaseBrowser";
+    return "flipper-plugin-dbbrowser";
   }
 
   void _onEvent(Object event) {

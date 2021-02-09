@@ -13,7 +13,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 
 public class FlipperReduxInspectorPlugin extends BufferingFlipperPlugin {
-    public static final String ID = "ReduxInspector";
+    public static final String ID = "flipper-plugin-reduxinspector";
 
     @Override
     public String getId() {

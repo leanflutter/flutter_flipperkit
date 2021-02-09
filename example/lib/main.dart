@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
               title: Text("ReduxInspector"),
               onTap: () {
                 FlipperReduxInspectorPlugin flipperReduxInspectorPlugin = 
-                  FlipperClient.getDefault().getPlugin("ReduxInspector");
+                  FlipperClient.getDefault().getPlugin("flipper-plugin-reduxinspector");
 
                 ActionInfo actionInfo = ActionInfo(
                   uniqueId: new Uuid().v4(),
