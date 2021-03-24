@@ -24,7 +24,7 @@
 }
 
 - (NSString *)identifier {
-    return @"DatabaseBrowser";
+    return @"flipper-plugin-dbbrowser";
 }
 
 - (void)setEventSink:(FlutterEventSink) eventSink {

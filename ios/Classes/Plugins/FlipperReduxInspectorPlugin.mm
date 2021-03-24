@@ -13,7 +13,7 @@
 }
 
 - (NSString *)identifier {
-    return @"ReduxInspector";
+    return @"flipper-plugin-reduxinspector";
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
