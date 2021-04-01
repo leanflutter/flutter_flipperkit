@@ -13,25 +13,15 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.21
-```
-
-如何你在使用旧版本的 Flutter ，请使用以下方式添加：
-
-```yaml
-dependencies:
-  flutter_flipperkit:
-    git:
-      url: https://github.com/leanflutter/flutter_flipperkit
-      ref: legacy
+  flutter_flipperkit: ^0.0.25
 ```
 
 根据示例更改项目的 ios/Podfile 文件：
 
 ```diff
 # Uncomment this line to define a global platform for your project
--# platform :ios, '8.0'
-+platform :ios, '9.0'
+-# platform :ios, '9.0'
++platform :ios, '10.0'
 ```
 
 根据示例更改项目文件：

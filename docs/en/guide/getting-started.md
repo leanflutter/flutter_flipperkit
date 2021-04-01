@@ -12,25 +12,15 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.21
-```
-
-If you are using a legacy version of Flutter, please add it in the following way:
-
-```yaml
-dependencies:
-  flutter_flipperkit:
-    git:
-      url: https://github.com/leanflutter/flutter_flipperkit
-      ref: legacy
+  flutter_flipperkit: ^0.0.25
 ```
 
 Change your project `ios/Podfile` file according to the example:
 
 ```diff
 # Uncomment this line to define a global platform for your project
--# platform :ios, '8.0'
-+platform :ios, '9.0'
+-# platform :ios, '9.0'
++platform :ios, '10.0'
 ```
 
 Change your project files according to the example:
