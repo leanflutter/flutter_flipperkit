@@ -1,3 +1,7 @@
+## 0.0.25
+
+* Upgrade `flipper` to `0.81.0`
+
 ## 0.0.24
 
 * Upgrade `flipper` to `0.61.0` & `flutter` to `1.22.0`

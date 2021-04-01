@@ -1,11 +1,12 @@
-flipperkit_version = '0.74.0'
+flipperkit_version = '0.81.0'
 
 #
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
+# Run `pod lib lint flutter_flipperkit.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.24'
+  s.version          = '0.0.25'
   s.summary          = 'Flipper (Extensible mobile app debugger) for flutter.'
   s.description      = <<-DESC
   Flipper (Extensible mobile app debugger) for flutter.
@@ -24,6 +25,9 @@ Pod::Spec.new do |s|
   s.dependency 'FlipperKit/FlipperKitUserDefaultsPlugin', '~>' + flipperkit_version
 
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.static_framework = true
+
+  # Flutter.framework does not contain a i386 slice.
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
 end

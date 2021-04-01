@@ -1,71 +1,69 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - CocoaAsyncSocket (7.6.4)
-  - CocoaLibEvent (1.0.0)
+  - CocoaAsyncSocket (7.6.5)
   - ComponentKit (0.30):
     - RenderCore (= 0.30)
     - Yoga (~> 1.14)
-  - Flipper (0.61.0):
-    - Flipper-Folly (~> 2.2)
-    - Flipper-RSocket (~> 1.1)
+  - Flipper (0.81.0):
+    - Flipper-Folly (~> 2.5)
+    - Flipper-RSocket (~> 1.3)
   - Flipper-DoubleConversion (1.1.7)
-  - Flipper-Folly (2.2.0):
+  - Flipper-Folly (2.5.1):
     - boost-for-react-native
-    - CocoaLibEvent (~> 1.0)
     - Flipper-DoubleConversion
     - Flipper-Glog
-    - OpenSSL-Universal (= 1.0.2.19)
+    - libevent (~> 2.1.12)
+    - OpenSSL-Universal (= 1.1.180)
   - Flipper-Glog (0.3.6)
   - Flipper-PeerTalk (0.0.4)
-  - Flipper-RSocket (1.1.0):
-    - Flipper-Folly (~> 2.2)
-  - FlipperKit (0.61.0):
-    - FlipperKit/Core (= 0.61.0)
-  - FlipperKit/Core (0.61.0):
-    - Flipper (~> 0.61.0)
+  - Flipper-RSocket (1.3.1):
+    - Flipper-Folly (~> 2.5)
+  - FlipperKit (0.81.0):
+    - FlipperKit/Core (= 0.81.0)
+  - FlipperKit/Core (0.81.0):
+    - Flipper (~> 0.81.0)
     - FlipperKit/CppBridge
     - FlipperKit/FBCxxFollyDynamicConvert
     - FlipperKit/FBDefines
     - FlipperKit/FKPortForwarding
-  - FlipperKit/CppBridge (0.61.0):
-    - Flipper (~> 0.61.0)
-  - FlipperKit/FBCxxFollyDynamicConvert (0.61.0):
-    - Flipper-Folly (~> 2.2)
-  - FlipperKit/FBDefines (0.61.0)
-  - FlipperKit/FKPortForwarding (0.61.0):
+  - FlipperKit/CppBridge (0.81.0):
+    - Flipper (~> 0.81.0)
+  - FlipperKit/FBCxxFollyDynamicConvert (0.81.0):
+    - Flipper-Folly (~> 2.5)
+  - FlipperKit/FBDefines (0.81.0)
+  - FlipperKit/FKPortForwarding (0.81.0):
     - CocoaAsyncSocket (~> 7.6)
     - Flipper-PeerTalk (~> 0.0.4)
-  - FlipperKit/FlipperKitHighlightOverlay (0.61.0)
-  - FlipperKit/FlipperKitLayoutComponentKitSupport (0.61.0):
-    - ComponentKit (~> 0.30)
+  - FlipperKit/FlipperKitHighlightOverlay (0.81.0)
+  - FlipperKit/FlipperKitLayoutComponentKitSupport (0.81.0):
+    - ComponentKit (= 0.30)
     - FlipperKit/Core
     - FlipperKit/FlipperKitHighlightOverlay
     - FlipperKit/FlipperKitLayoutPlugin
     - FlipperKit/FlipperKitLayoutTextSearchable
-    - RenderCore (~> 0.30)
-  - FlipperKit/FlipperKitLayoutPlugin (0.61.0):
+    - RenderCore (= 0.30)
+  - FlipperKit/FlipperKitLayoutPlugin (0.81.0):
     - FlipperKit/Core
     - FlipperKit/FlipperKitHighlightOverlay
     - FlipperKit/FlipperKitLayoutTextSearchable
     - YogaKit (~> 1.18)
-  - FlipperKit/FlipperKitLayoutTextSearchable (0.61.0)
-  - FlipperKit/FlipperKitNetworkPlugin (0.61.0):
+  - FlipperKit/FlipperKitLayoutTextSearchable (0.81.0)
+  - FlipperKit/FlipperKitNetworkPlugin (0.81.0):
     - FlipperKit/Core
-  - FlipperKit/FlipperKitUserDefaultsPlugin (0.61.0):
+  - FlipperKit/FlipperKitUserDefaultsPlugin (0.81.0):
     - FlipperKit/Core
-  - FlipperKit/SKIOSNetworkPlugin (0.61.0):
+  - FlipperKit/SKIOSNetworkPlugin (0.81.0):
     - FlipperKit/Core
     - FlipperKit/FlipperKitNetworkPlugin
   - Flutter (1.0.0)
-  - flutter_flipperkit (0.0.24):
-    - FlipperKit (~> 0.61.0)
-    - FlipperKit/FlipperKitLayoutComponentKitSupport (~> 0.61.0)
-    - FlipperKit/FlipperKitUserDefaultsPlugin (~> 0.61.0)
-    - FlipperKit/SKIOSNetworkPlugin (~> 0.61.0)
+  - flutter_flipperkit (0.0.25):
+    - FlipperKit (~> 0.81.0)
+    - FlipperKit/FlipperKitLayoutComponentKitSupport (~> 0.81.0)
+    - FlipperKit/FlipperKitUserDefaultsPlugin (~> 0.81.0)
+    - FlipperKit/SKIOSNetworkPlugin (~> 0.81.0)
     - Flutter
-  - OpenSSL-Universal (1.0.2.19):
-    - OpenSSL-Universal/Static (= 1.0.2.19)
-  - OpenSSL-Universal/Static (1.0.2.19)
+  - libevent (2.1.12)
+  - OpenSSL-Universal (1.1.180)
   - RenderCore (0.30)
   - shared_preferences (0.0.1):
     - Flutter
@@ -82,7 +80,6 @@ SPEC REPOS:
   trunk:
     - boost-for-react-native
     - CocoaAsyncSocket
-    - CocoaLibEvent
     - ComponentKit
     - Flipper
     - Flipper-DoubleConversion
@@ -91,6 +88,7 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - Flipper-RSocket
     - FlipperKit
+    - libevent
     - OpenSSL-Universal
     - RenderCore
     - Yoga
@@ -106,24 +104,24 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CocoaAsyncSocket: 694058e7c0ed05a9e217d1b3c7ded962f4180845
-  CocoaLibEvent: 2fab71b8bd46dd33ddb959f7928ec5909f838e3f
+  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   ComponentKit: c34da1ab3515cf18db68a4ba22c6599568d1de74
-  Flipper: 720e4ef27f978c9803a3ff8f5ba75a43504b502f
+  Flipper: 7d07b8a6eda71faf6667ae392dbae89dc34c9990
   Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
-  Flipper-Folly: c12092ea368353b58e992843a990a3225d4533c3
+  Flipper-Folly: f7a3caafbd74bda4827954fd7a6e000e36355489
   Flipper-Glog: 1dfd6abf1e922806c52ceb8701a3599a79a200a6
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
-  Flipper-RSocket: 64e7431a55835eb953b0bf984ef3b90ae9fdddd7
-  FlipperKit: 1864517c79a77aabc52285d0f51a178ebade3a23
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_flipperkit: 99a399ebfc041fffcef9537169e552c57546cc22
-  OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
+  Flipper-RSocket: 127954abe8b162fcaf68d2134d34dc2bd7076154
+  FlipperKit: 6f3a5405de21f1a22024af2fcfb8f3065b0bbbee
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  flutter_flipperkit: e43d660c52240b352010f8999f75b7e66aa2247a
+  libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   RenderCore: d779c47622b313ce2d51bb36d084517af38b0dc1
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   Yoga: cff67a400f6b74dc38eb0bad4f156673d9aa980c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+PODFILE CHECKSUM: a5ead389ae8478b2f010fbadad4f103eae9ff09f
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.1

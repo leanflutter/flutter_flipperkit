@@ -35,7 +35,7 @@ class FlipperReduxInspectorPlugin extends FlipperPlugin{
 
   @override
   String getId() {
-    return 'ReduxInspector';
+    return 'flipper-plugin-reduxinspector';
   } 
 
   void report(final ActionInfo actionInfo) async {
