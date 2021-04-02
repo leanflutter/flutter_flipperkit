@@ -13,7 +13,7 @@
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.25
+  flutter_flipperkit: ^0.0.26
 ```
 
 根据示例更改项目的 ios/Podfile 文件：

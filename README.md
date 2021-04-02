@@ -52,7 +52,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.25
+  flutter_flipperkit: ^0.0.26
 ```
 
 Or
@@ -108,7 +108,7 @@ Change your project `ios/Podfile` file according to the example:
 ```diff
 # Uncomment this line to define a global platform for your project
 - # platform :ios, '9.0'
-+platform :ios, '9.0'
++platform :ios, '10.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -209,7 +209,7 @@ If you have any suggestions or questions about this project, you can discuss it 
 ```text
 MIT License
 
-Copyright (c) 2019-2020 LiJianying <lijy91@foxmail.com>
+Copyright (c) 2019-2021 LiJianying <lijy91@foxmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

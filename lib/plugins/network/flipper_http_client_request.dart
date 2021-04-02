@@ -6,15 +6,15 @@ import './flipper_network_plugin.dart';
 import './flipper_http_client_response.dart';
 
 class FlipperHttpClientRequest implements HttpClientRequest {
-  FlipperNetworkPlugin _flipperNetworkPlugin;
+  FlipperNetworkPlugin? _flipperNetworkPlugin;
 
   final String uniqueId;
   final HttpClientRequest request;
   StreamController<List<int>> streamController = new StreamController();
 
   FlipperHttpClientRequest(this.uniqueId, this.request) {
-    _flipperNetworkPlugin =
-        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
+    _flipperNetworkPlugin = FlipperClient.getDefault()
+        .getPlugin(FlipperNetworkPlugin.ID) as FlipperNetworkPlugin;
   }
 
   @override
@@ -59,7 +59,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
   }
 
   @override
-  void addError(Object error, [StackTrace stackTrace]) {
+  void addError(error, [StackTrace? stackTrace]) {
     request.addError(error, stackTrace);
   }
 
@@ -78,8 +78,8 @@ class FlipperHttpClientRequest implements HttpClientRequest {
 
   @override
   Future<HttpClientResponse> close() async {
-    bool skipped = _flipperNetworkPlugin.filter != null &&
-        !_flipperNetworkPlugin.filter(request);
+    bool skipped = _flipperNetworkPlugin!.filter != null &&
+        !(_flipperNetworkPlugin!.filter!(request));
 
     if (!skipped) {
       await this._reportRequest(uniqueId, request);
@@ -90,7 +90,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
   }
 
   @override
-  HttpConnectionInfo get connectionInfo => request.connectionInfo;
+  HttpConnectionInfo? get connectionInfo => request.connectionInfo;
 
   @override
   List<Cookie> get cookies => request.cookies;
@@ -113,7 +113,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
   Uri get uri => request.uri;
 
   @override
-  void write(Object obj) {
+  void write(Object? obj) {
     request.write(obj);
   }
 
@@ -128,7 +128,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
   }
 
   @override
-  void writeln([Object obj = ""]) {
+  void writeln([Object? obj = ""]) {
     request.writeln(obj);
   }
 
@@ -146,7 +146,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
     HttpClientRequest request,
   ) async {
     Map<String, dynamic> headers = new Map();
-    request.headers.forEach((String name, List<String> values) {
+    request.headers.forEach((String name, List<String>? values) {
       if (values != null && values.length > 0) {
         headers.putIfAbsent(
             name, () => values.length == 1 ? values[0] : values);
@@ -176,7 +176,7 @@ class FlipperHttpClientRequest implements HttpClientRequest {
   }
 
   @override
-  void abort([Object exception, StackTrace stackTrace]) {
+  void abort([Object? exception, StackTrace? stackTrace]) {
     request.abort([exception, stackTrace]);
   }
 }

@@ -2,9 +2,9 @@ import 'package:flutter/services.dart';
 import '../../flipper_plugin.dart';
 
 class ActionInfo {
-  String uniqueId;
-  String actionType;
-  int timeStamp;
+  String? uniqueId;
+  String? actionType;
+  int? timeStamp;
   dynamic payload;
   dynamic prevState;
   dynamic nextState;

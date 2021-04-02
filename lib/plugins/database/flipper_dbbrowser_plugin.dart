@@ -28,7 +28,7 @@ class FlipperDatabaseBrowserPlugin extends FlipperPlugin{
     return "flipper-plugin-dbbrowser";
   }
 
-  void _onEvent(Object event) {
+  void _onEvent(dynamic event) {
     Map map = event;
 
     String eventType = '${map['action']}';

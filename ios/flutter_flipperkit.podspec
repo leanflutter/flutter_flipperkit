@@ -6,7 +6,7 @@ flipperkit_version = '0.81.0'
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_flipperkit'
-  s.version          = '0.0.25'
+  s.version          = '0.0.26'
   s.summary          = 'Flipper (Extensible mobile app debugger) for flutter.'
   s.description      = <<-DESC
   Flipper (Extensible mobile app debugger) for flutter.

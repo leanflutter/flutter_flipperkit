@@ -5,7 +5,7 @@ import 'package:uuid/uuid.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   FlipperClient flipperClient = FlipperClient.getDefault();
 
   flipperClient.addPlugin(new FlipperNetworkPlugin());
@@ -23,18 +23,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   void _testNetwork() {
-    FlipperNetworkPlugin flipperNetworkPlugin = 
-      FlipperClient.getDefault().getPlugin("Network");
+    FlipperNetworkPlugin flipperNetworkPlugin =
+        FlipperClient.getDefault().getPlugin("Network") as FlipperNetworkPlugin;
 
     String uniqueId = new Uuid().v4();
     RequestInfo requestInfo = new RequestInfo(
       requestId: uniqueId,
       timeStamp: new DateTime.now().millisecondsSinceEpoch,
       uri: 'https://example.com/account/login',
-      headers: new Map()
-        ..putIfAbsent("Content-Type", () => "application/json"),
+      headers: new Map()..putIfAbsent("Content-Type", () => "application/json"),
       method: 'POST',
       body: new Map()
         ..putIfAbsent("username", () => "example")
@@ -47,8 +45,7 @@ class _MyAppState extends State<MyApp> {
       requestId: uniqueId,
       timeStamp: new DateTime.now().millisecondsSinceEpoch,
       statusCode: 200,
-      headers: new Map()
-        ..putIfAbsent("Content-Type", () => "application/json"),
+      headers: new Map()..putIfAbsent("Content-Type", () => "application/json"),
       body: new Map()
         ..putIfAbsent("username", () => "lijy91")
         ..putIfAbsent("age", () => 28)
@@ -82,8 +79,10 @@ class _MyAppState extends State<MyApp> {
             ListTile(
               title: Text("ReduxInspector"),
               onTap: () {
-                FlipperReduxInspectorPlugin flipperReduxInspectorPlugin = 
-                  FlipperClient.getDefault().getPlugin("flipper-plugin-reduxinspector");
+                FlipperReduxInspectorPlugin flipperReduxInspectorPlugin =
+                    FlipperClient.getDefault()
+                            .getPlugin("flipper-plugin-reduxinspector")
+                        as FlipperReduxInspectorPlugin;
 
                 ActionInfo actionInfo = ActionInfo(
                   uniqueId: new Uuid().v4(),
@@ -93,7 +92,7 @@ class _MyAppState extends State<MyApp> {
                     ..putIfAbsent("username", () => "lijy91@foxmail.com")
                     ..putIfAbsent("password", () => "123456"),
                   nextState: new Map()
-                    ..putIfAbsent("user", () => { "name": "LiJianying"})
+                    ..putIfAbsent("user", () => {"name": "LiJianying"}),
                 );
                 flipperReduxInspectorPlugin.report(actionInfo);
               },

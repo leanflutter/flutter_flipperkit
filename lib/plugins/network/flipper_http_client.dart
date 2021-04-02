@@ -4,36 +4,36 @@ import 'package:uuid/uuid.dart';
 import './flipper_http_client_request.dart';
 
 class FlipperHttpClient implements HttpClient {
-  final HttpClient client;
+  final HttpClient? client;
 
   Uuid _uuid = new Uuid();
 
   FlipperHttpClient(this.client);
 
   @override
-  Duration idleTimeout;
-  
-  @override
-  Duration connectionTimeout;
+  Duration idleTimeout = const Duration(seconds: 15);
 
   @override
-  int maxConnectionsPerHost;
+  Duration? connectionTimeout;
 
   @override
-  bool autoUncompress;
+  int? maxConnectionsPerHost;
 
   @override
-  String userAgent;
+  bool autoUncompress = true;
+
+  @override
+  String? userAgent;
 
   @override
   Future<HttpClientRequest> open(
       String method, String host, int port, String path) {
-    return withInterceptor(client.open(method, host, port, path));
+    return withInterceptor(client!.open(method, host, port, path));
   }
 
   @override
   Future<HttpClientRequest> openUrl(String method, Uri url) {
-    return withInterceptor(client.openUrl(method, url));
+    return withInterceptor(client!.openUrl(method, url));
   }
 
   @override
@@ -42,7 +42,7 @@ class FlipperHttpClient implements HttpClient {
   }
 
   @override
-  Future<HttpClientRequest> getUrl(Uri url)  {
+  Future<HttpClientRequest> getUrl(Uri url) {
     return openUrl('get', url);
   }
 
@@ -97,48 +97,50 @@ class FlipperHttpClient implements HttpClient {
   }
 
   @override
-  set authenticate(Future<bool> f(Uri url, String scheme, String realm)) {
-    client.authenticate = f;
+  set authenticate(Future<bool> f(Uri url, String scheme, String realm)?) {
+    client!.authenticate = f;
   }
 
   @override
-  void addCredentials(Uri url, String realm, HttpClientCredentials credentials) {
-    client.addCredentials(url, realm, credentials);
+  void addCredentials(
+      Uri url, String realm, HttpClientCredentials credentials) {
+    client!.addCredentials(url, realm, credentials);
   }
 
   @override
-  set findProxy(String f(Uri url)) {
-    client.findProxy = f;
+  set findProxy(String f(Uri url)?) {
+    client!.findProxy = f;
   }
 
   @override
   set authenticateProxy(
-      Future<bool> f(String host, int port, String scheme, String realm)) {
-    client.authenticateProxy = f;
+      Future<bool> f(String host, int port, String scheme, String realm)?) {
+    client!.authenticateProxy = f;
   }
 
   @override
   void addProxyCredentials(
       String host, int port, String realm, HttpClientCredentials credentials) {
-    client.addProxyCredentials(host, port, realm, credentials);
+    client!.addProxyCredentials(host, port, realm, credentials);
   }
 
   @override
   set badCertificateCallback(
-      bool callback(X509Certificate cert, String host, int port)) {
-    client.badCertificateCallback = callback;
+      bool callback(X509Certificate cert, String host, int port)?) {
+    client!.badCertificateCallback = callback;
   }
 
   @override
   void close({bool force: false}) {
-    client.close(force: force);
+    client!.close(force: force);
   }
 
-  Future<FlipperHttpClientRequest> withInterceptor(Future<HttpClientRequest> future) async {
+  Future<FlipperHttpClientRequest> withInterceptor(
+      Future<HttpClientRequest> future) async {
     HttpClientRequest request = await future;
 
-    FlipperHttpClientRequest requestWithInterceptor = 
-      new FlipperHttpClientRequest(_uuid.v4(), request);
+    FlipperHttpClientRequest requestWithInterceptor =
+        new FlipperHttpClientRequest(_uuid.v4(), request);
     return requestWithInterceptor;
   }
 }

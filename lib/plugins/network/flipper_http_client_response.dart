@@ -4,8 +4,9 @@ import 'dart:io';
 import '../../flipper_client.dart';
 import './flipper_network_plugin.dart';
 
-class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientResponse {
-  FlipperNetworkPlugin _flipperNetworkPlugin;
+class FlipperHttpClientResponse extends Stream<List<int>>
+    implements HttpClientResponse {
+  FlipperNetworkPlugin? _flipperNetworkPlugin;
 
   final String uniqueId;
   final HttpClientResponse response;
@@ -13,21 +14,22 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
   StreamController<List<int>> streamController = new StreamController();
 
   FlipperHttpClientResponse(this.uniqueId, this.response) {
-    _flipperNetworkPlugin =
-        FlipperClient.getDefault().getPlugin(FlipperNetworkPlugin.ID);
+    _flipperNetworkPlugin = FlipperClient.getDefault()
+        .getPlugin(FlipperNetworkPlugin.ID) as FlipperNetworkPlugin;
   }
 
   @override
-  X509Certificate get certificate => response.certificate;
+  X509Certificate? get certificate => response.certificate;
 
   @override
-  HttpConnectionInfo get connectionInfo => response.connectionInfo;
+  HttpConnectionInfo? get connectionInfo => response.connectionInfo;
 
   @override
   int get contentLength => response.contentLength;
 
   @override
-  HttpClientResponseCompressionState get compressionState => response.compressionState;
+  HttpClientResponseCompressionState get compressionState =>
+      response.compressionState;
 
   @override
   List<Cookie> get cookies => response.cookies;
@@ -44,24 +46,26 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
   bool get isRedirect => response.isRedirect;
 
   @override
-  StreamSubscription<List<int>> listen(void Function(List<int> event) onData, {Function onError, void Function() onDone, bool cancelOnError}) {
+  StreamSubscription<List<int>> listen(void Function(List<int> event)? onData,
+      {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     final _onData = (List<int> event) {
-      onData(event);
+      onData!(event);
 
       streamController.sink.add(event);
     };
 
     final _onError = (error, StackTrace stackTrace) async {
-      onError(error, stackTrace);
+      onError!(error, stackTrace);
     };
 
     final _onDone = () async {
-      onDone();
+      onDone!();
 
       await this._reportResponse(uniqueId);
     };
 
-    return response.listen(_onData, onError: _onError, onDone: _onDone, cancelOnError: cancelOnError);
+    return response.listen(_onData,
+        onError: _onError, onDone: _onDone, cancelOnError: cancelOnError);
   }
 
   @override
@@ -71,7 +75,8 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
   String get reasonPhrase => response.reasonPhrase;
 
   @override
-  Future<HttpClientResponse> redirect([String method, Uri url, bool followLoops]) {
+  Future<HttpClientResponse> redirect(
+      [String? method, Uri? url, bool? followLoops]) {
     return response.redirect(method, url, followLoops);
   }
 
@@ -83,9 +88,10 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
 
   Future<bool> _reportResponse(String uniqueId) async {
     Map<String, dynamic> headers = new Map();
-    response.headers.forEach((String name, List<String> values) {
+    response.headers.forEach((String name, List<String>? values) {
       if (values != null && values.length > 0) {
-        headers.putIfAbsent(name, () => values.length == 1 ? values[0] : values);
+        headers.putIfAbsent(
+            name, () => values.length == 1 ? values[0] : values);
       }
     });
 
@@ -93,8 +99,10 @@ class FlipperHttpClientResponse extends Stream<List<int>> implements HttpClientR
 
     try {
       if (!streamController.isClosed) streamController.close();
-      body = await Utf8Decoder(allowMalformed: false).bind(streamController.stream).join();
-    } catch (e) { }
+      body = await Utf8Decoder(allowMalformed: false)
+          .bind(streamController.stream)
+          .join();
+    } catch (e) {}
 
     ResponseInfo responseInfo = new ResponseInfo(
       requestId: uniqueId,

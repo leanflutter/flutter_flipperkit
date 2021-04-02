@@ -4,11 +4,11 @@ import '../../flipper_plugin.dart';
 import './flipper_http_overrides.dart';
 
 class RequestInfo {
-  String requestId;
-  int timeStamp;
-  Map<String, dynamic> headers;
-  String method;
-  String uri;
+  String? requestId;
+  int? timeStamp;
+  Map<String, dynamic>? headers;
+  String? method;
+  String? uri;
   dynamic body;
 
   RequestInfo({
@@ -36,11 +36,11 @@ class RequestInfo {
 }
 
 class ResponseInfo {
-  String requestId;
-  int timeStamp;
-  int statusCode;
-  String statusReason;
-  Map<String, dynamic> headers;
+  String? requestId;
+  int? timeStamp;
+  int? statusCode;
+  String? statusReason;
+  Map<String, dynamic>? headers;
   dynamic body;
 
   ResponseInfo({
@@ -70,7 +70,7 @@ class FlipperNetworkPlugin extends FlipperPlugin {
   static const String ID = 'Network';
   static const MethodChannel _channel = const MethodChannel('flutter_flipperkit'); 
 
-  bool Function(HttpClientRequest request) filter;
+  bool Function(HttpClientRequest request)? filter;
 
   FlipperNetworkPlugin({
     useHttpOverrides = true,
