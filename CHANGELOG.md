@@ -1,3 +1,7 @@
+## 0.0.27
+
+* Upgrade `flipper` to `0.91.2`
+
 ## 0.0.26
 
 * Support null safety

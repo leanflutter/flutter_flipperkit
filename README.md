@@ -52,7 +52,7 @@ Add this to your package's pubspec.yaml file:
 
 ```yaml
 dependencies:
-  flutter_flipperkit: ^0.0.26
+  flutter_flipperkit: ^0.0.27
 ```
 
 Or
