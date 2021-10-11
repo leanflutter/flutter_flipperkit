@@ -97,7 +97,7 @@ class FlipperHttpClient implements HttpClient {
   }
 
   @override
-  set authenticate(Future<bool> f(Uri url, String scheme, String realm)?) {
+  set authenticate(Future<bool> f(Uri url, String scheme, String? realm)?) {
     client!.authenticate = f;
   }
 
@@ -114,7 +114,7 @@ class FlipperHttpClient implements HttpClient {
 
   @override
   set authenticateProxy(
-      Future<bool> f(String host, int port, String scheme, String realm)?) {
+      Future<bool> f(String host, int port, String scheme, String? realm)?) {
     client!.authenticateProxy = f;
   }
 
