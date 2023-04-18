@@ -143,4 +143,14 @@ class FlipperHttpClient implements HttpClient {
         new FlipperHttpClientRequest(_uuid.v4(), request);
     return requestWithInterceptor;
   }
+
+  @override
+  set connectionFactory(Future<ConnectionTask<Socket>> Function(Uri url, String? proxyHost, int? proxyPort)? f) {
+    client!.connectionFactory = f;
+  }
+
+  @override
+  set keyLog(Function(String line)? callback) {
+    client!.keyLog = callback;
+  }
 }
