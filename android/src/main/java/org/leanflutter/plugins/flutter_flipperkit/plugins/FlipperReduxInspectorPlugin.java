@@ -24,9 +24,9 @@ public class FlipperReduxInspectorPlugin extends BufferingFlipperPlugin {
         if (call.method.endsWith("Report")) {
             final FlipperObject actionObject =
                     new FlipperObject.Builder()
-                            .put("uniqueId", call.argument("uniqueId"))
-                            .put("actionType", call.argument("actionType"))
-                            .put("timeStamp", call.argument("timeStamp"))
+                            .put("uniqueId", String.valueOf(call.argument("uniqueId")))
+                            .put("actionType", String.valueOf(call.argument("actionType")))
+                            .put("timeStamp", (int) call.argument("timeStamp"))
                             .put("payload", this.convertJsonToString(call, "payload"))
                             .put("prevState", this.convertJsonToString(call, "prevState"))
                             .put("nextState", this.convertJsonToString(call, "nextState"))
