@@ -1,4 +1,4 @@
-flipperkit_version = '0.111.0'
+flipperkit_version = '0.189.0'
 
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.dependency 'FlipperKit/FlipperKitUserDefaultsPlugin', '~>' + flipperkit_version
 
   s.xcconfig = {'OTHER_CFLAGS' => '-DFB_SONARKIT_ENABLED=1'}
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
   s.static_framework = true
 
   # Flutter.framework does not contain a arm64 slice.
