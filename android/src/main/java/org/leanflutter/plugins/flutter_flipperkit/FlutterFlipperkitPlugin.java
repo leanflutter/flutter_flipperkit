@@ -267,7 +267,10 @@ public class FlutterFlipperkitPlugin implements FlutterPlugin, MethodCallHandler
         SoLoader.init(context.getApplicationContext(), false);
         if (BuildConfig.DEBUG && FlipperUtils.shouldEnableFlipper(context)) {
             flipperClient = AndroidFlipperClient.getInstance(context);
-            networkFlipperPlugin = new NetworkFlipperPlugin();
+            networkFlipperPlugin = flipperClient.getPlugin(NetworkFlipperPlugin.ID);
+            if (networkFlipperPlugin == null) {
+                networkFlipperPlugin = new NetworkFlipperPlugin();
+            }
             sharedPreferencesFlipperPlugin = new SharedPreferencesFlipperPlugin(context, "FlutterSharedPreferences");
 
             flipperDatabaseBrowserPlugin = new FlipperDatabaseBrowserPlugin();
